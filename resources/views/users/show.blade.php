@@ -16,14 +16,21 @@ s/views/users/show.blade.php
             </div>
         </aside>
         <div class="col-sm-8">
-            <ul class="nav nav-tabs nav-justified mb-3">
+            <ul class="nav nav-tabs nav-justified">
                 {{-- ユーザ詳細タブ --}}
-                <li class="nav-item"><a href="#" class="nav-link">TimeLine</a></li>
-                {{-- フォロー一覧タブ --}}
-                <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
-                {{-- フォロワー一覧タブ --}}
-                <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
+                <li class="nav-item">
+                    <a href="{{ route('users.show', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
+                        TimeLine
+                        <span class="badge badge-secondary">{{ $user->microposts_count }}</span>
+                    </a>
+                </li>
             </ul>
+            @if (Auth::id() == $user->id)
+                {{-- 投稿フォーム --}}
+                @include('giving_users.form')
+            @endif
+            {{-- 投稿一覧 --}}
+            @include('giving_users.giving_users')
         </div>
     </div>
 @endsection

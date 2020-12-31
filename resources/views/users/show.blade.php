@@ -1,5 +1,3 @@
-s/views/users/show.blade.php
-
 @extends('layouts.app')
 
 @section('content')

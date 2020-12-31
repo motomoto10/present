@@ -13,4 +13,14 @@ class Giving_user extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function anniversaries()
+    {
+        return $this->hasMany(Anniversary::class);
+    }
+    
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('anniversaries');
+    }
 }

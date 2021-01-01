@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Giving_user;
+
+use App\anniversary;
+
 class AnniversariesController extends Controller
 {
     public function index()
@@ -25,7 +29,7 @@ class AnniversariesController extends Controller
         return view('welcome', $data);
     }
     
-       public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'anniversary' => 'required|max:255',
@@ -38,6 +42,22 @@ class AnniversariesController extends Controller
             ]);
             
         return back();
+    }
+    
+    public function destroy($id)
+    {
+        $anniversary = \App\anniversary::findOrFail($id);
+        
+        if(\Auth::id() === $anniversary->giving_user_id) {
+            $anniversary->delete();
+        }
+        
+        return back();
+    }
+    
+    public function anniversariesForm()
+    {
+        return view('anniversaries.form');
     }
     
 }

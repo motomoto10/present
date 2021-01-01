@@ -17,15 +17,7 @@
                     </div>
                     <div>
                         @if (Auth::id() == $giving_user->user_id)
-                        
-                        <p>お祝いを追加する</p>
-                            {!! Form::open(['route' => 'anniversaries.store']) !!}
-                                <div class="form-group">
-                                    お祝い：{!! Form::textarea('anniversary', old('anniversary'), ['class' => 'form-control', 'rows' => '1']) !!}
-                                    日程：{!! Form::textarea('day', old('day'), ['class' => 'form-control', 'rows' => '1']) !!}
-                                    {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
-                                </div>
-                            {!! Form::close() !!}
+                            <button class="btn btn-default btn-sm">{!! link_to_route('anniversaries.get', 'お祝いを登録する', [], []) !!}</button>
                             {{-- 投稿削除ボタンのフォーム --}}
                             {!! Form::open(['route' => ['giving_users.destroy', $giving_user->id], 'method' => 'delete']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}

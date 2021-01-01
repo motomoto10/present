@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Giving_user;
+
 class Giving_usersController extends Controller
 {
     public function index()
@@ -35,9 +37,9 @@ class Giving_usersController extends Controller
         $request->user()->giving_users()->create([
             'name' => $request->name,
             'relation' => $request->relation,
-            ]);    
+            ]);
             
-        return back();
+            return back();
     }
     
     public function destroy($id)
@@ -49,5 +51,10 @@ class Giving_usersController extends Controller
         }
         
         return back();
+    }
+    
+    public function giving_userForm()
+    {
+        return view('giving_users.userform');
     }
 }

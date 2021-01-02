@@ -23,6 +23,9 @@
     
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+        
+        Route::get('giving_user', 'Giving_usersController@show')->name('giving_user.show');
+        
         Route::get('giving_user', 'Giving_usersController@giving_userForm')->name('giving_user.get');
         Route::post('giving_user','Giving_usersController@giving_userPost')->name('giving_user.post');
         

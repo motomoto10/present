@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class anniversary extends Model
+class Anniversary extends Model
 {
     protected $fillable = ['day','anniversary',];
     

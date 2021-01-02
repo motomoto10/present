@@ -57,4 +57,22 @@ class Giving_usersController extends Controller
     {
         return view('giving_users.userform');
     }
+    
+    public function show()
+    {
+        $data = [];
+        if (\Auth::check()) { // 認証済みの場合
+            // 認証済みユーザを取得
+            $user = \Auth::user();
+            // ユーザの投稿の一覧を作成日時の降順で取得
+            $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
+
+            $data = [
+                'user' => $user,
+                'giving_users' => $giving_users,
+            ];
+        }
+        
+        return view('giving_users.show');
+    }
 }

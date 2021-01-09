@@ -22,4 +22,6 @@ class Anniversary extends Model
     {
         $this->loadCount('presents');
     }
+    
+    protected $dates = ['day'];
 }

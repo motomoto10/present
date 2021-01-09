@@ -16,7 +16,7 @@
                         <p class="mb-0">関係性：{!! nl2br(e($giving_user->relation)) !!}</p>
                             @foreach ($giving_user->anniversaries as $anniversary)
                         <p class="mb-0">お祝い：{!! nl2br(e($anniversary->anniversary)) !!}</p>
-                        <p class="mb-0">日程：{!! nl2br(e($anniversary->day)) !!}</p>
+                        <p class="mb-0">日程：{!! nl2br(e($anniversary->day->format('n月j日') )) !!}</p>
                             <div>
                             @if (Auth::id() == $giving_user->user_id)
                                 <button class="btn btn-default btn-sm">{!! link_to_route('presents.create', 'プレゼントを登録する', ['id' => $anniversary->id], []) !!}</button>

@@ -12,4 +12,14 @@ class Anniversary extends Model
     {
         return $this->belongsTo(Giving_user::class);
     }
+    
+    public function presents()
+    {
+        return $this->hasMany(Present::class);
+    }
+    
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('presents');
+    }
 }

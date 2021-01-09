@@ -26,18 +26,23 @@
         
         Route::get('giving_user', 'Giving_usersController@show')->name('giving_user.show');
         
-        Route::get('giving_user', 'Giving_usersController@giving_userForm')->name('giving_user.get');
+        Route::get('giving_user', 'Giving_usersController@create')->name('giving_user.create');
         Route::post('giving_user','Giving_usersController@giving_userPost')->name('giving_user.post');
-        
-        Route::get('anniversary', 'AnniversariesController@anniversariesForm')->name('anniversaries.get');
-        Route::post('anniversary','AnniversariesController@anniversariesPost')->name('anniversaries.post');
-    
         Route::resource('giving_users', 'Giving_usersController', ['only' => ['store', 'destroy']]);
-        Route::resource('anniversaries', 'AnniversariesController', ['only' => ['store', 'destroy']]);
+        
+        Route::group(['prefix' => 'giving_users/{id}'],function() {
+            Route::get('anniversary', 'AnniversariesController@create')->name('anniversaries.create');
+            Route::post('anniversary','AnniversariesController@store')->name('anniversaries.store');
+            Route::delete('anniversary','AnniversariesController@destroy')->name('anniversaries.destroy');
+        });
+        
+        Route::group(['prefix' => 'anniversaries/{id}'],function() {
+            Route::get('present', 'PresentsController@create')->name('presents.create');
+            Route::post('present','PresentsController@store')->name('presents.store');
+            Route::delete('present','PresentsController@destroy')->name('presents.destroy');
+            
+        });
     });
 
 
-
-
-
-    Route::get('/','Giving_usersController@index');
+    Route::get('/','UsersController@index');

@@ -14,13 +14,35 @@
                         {{-- 投稿内容 --}}
                         <p class="mb-0">名前：{!! nl2br(e($giving_user->name)) !!}</p>
                         <p class="mb-0">関係性：{!! nl2br(e($giving_user->relation)) !!}</p>
+                            @foreach ($giving_user->anniversaries as $anniversary)
+                        <p class="mb-0">お祝い：{!! nl2br(e($anniversary->anniversary)) !!}</p>
+                        <p class="mb-0">日程：{!! nl2br(e($anniversary->day)) !!}</p>
+                            <div>
+                            @if (Auth::id() == $giving_user->user_id)
+                                <button class="btn btn-default btn-sm">{!! link_to_route('presents.create', 'プレゼントを登録する', ['id' => $anniversary->id], []) !!}</button>
+                                {{-- 投稿削除ボタンのフォーム --}}
+                                 @foreach ($anniversary->presents as $present)
+                                <p class="mb-0">プレゼント：{!! nl2br(e($present->present)) !!}</p>
+                                <p class="mb-0">あげた年：{!! nl2br(e($present->year)) !!}</p>
+                                {!! Form::open(['route' => ['presents.destroy', $present->id], 'method' => 'delete']) !!}
+                                    {!! Form::submit('プレゼントを消す', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                                @endforeach
+                            @endif
+                            </div>
+                        {!! Form::open(['route' => ['anniversaries.destroy', $anniversary->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('お祝いを消す', ['class' => 'btn btn-danger btn-sm']) !!}
+                        {!! Form::close() !!}
+                            @endforeach
                     </div>
+
                     <div>
                         @if (Auth::id() == $giving_user->user_id)
-                            <button class="btn btn-default btn-sm">{!! link_to_route('anniversaries.get', 'お祝いを登録する', [], []) !!}</button>
+                            <button class="btn btn-default btn-sm">{!! link_to_route('anniversaries.create', 'お祝いを登録する', ['id' => $giving_user->id], []) !!}</button>
                             {{-- 投稿削除ボタンのフォーム --}}
+                            
                             {!! Form::open(['route' => ['giving_users.destroy', $giving_user->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::submit('送りたい相手を消す', ['class' => 'btn btn-danger btn-sm']) !!}
                             {!! Form::close() !!}
                         @endif
                     </div>

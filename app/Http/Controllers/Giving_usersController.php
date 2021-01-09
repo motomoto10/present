@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Giving_user;
+use App\Anniversary;
 
 class Giving_usersController extends Controller
 {
@@ -27,6 +28,11 @@ class Giving_usersController extends Controller
     
     }
     
+    public function create()
+    {
+        return view('giving_users.create');
+    }
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -39,7 +45,7 @@ class Giving_usersController extends Controller
             'relation' => $request->relation,
             ]);
             
-            return back();
+            return redirect('/');
     }
     
     public function destroy($id)
@@ -53,10 +59,7 @@ class Giving_usersController extends Controller
         return back();
     }
     
-    public function giving_userForm()
-    {
-        return view('giving_users.userform');
-    }
+
     
     public function show()
     {

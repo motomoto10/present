@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Giving_user;
-
 use App\anniversary;
 
 class AnniversariesController extends Controller
@@ -29,35 +27,52 @@ class AnniversariesController extends Controller
         return view('welcome', $data);
     }
     
-    public function store(Request $request)
-    {
-        $request->validate([
-            'anniversary' => 'required|max:255',
-            'day' => 'required|max:255',
-        ]);
         
-        $request->user()->giving_users()->anniversaries()->create([
-            'anniversary' => $request->anniversary,
-            'day' => $request->day,
+    public function create($id)
+    {
+
+        $giving_user = \App\Giving_user::findOrFail($id);
+        
+        $anniversary = new Anniversary;
+        
+        return view('anniversaries.create',[
+            'anniversary'=> $anniversary,
+            'giving_user' => $giving_user,
+            ]);
+    }
+    
+    public function store(Request $request,$id)
+    {
+        if (\Auth::check()) {
+            
+            \Auth::user();
+                
+            $request->validate([
+                'anniversary' => 'required|max:255',
+                'day' => 'required|max:255',
             ]);
             
-        return back();
+            $anniversary = new Anniversary;
+            $anniversary->anniversary = $request->anniversary;
+            $anniversary->day = $request->day;
+            $anniversary->user_id = \Auth::user()->id;
+            $anniversary->giving_user_id = $id;
+            $anniversary->save();
+                
+            return redirect('/');
+        }
     }
     
     public function destroy($id)
     {
-        $anniversary = \App\anniversary::findOrFail($id);
+        $anniversary = \App\Anniversary::findOrFail($id);
         
-        if(\Auth::id() === $anniversary->giving_user_id) {
+        if(\Auth::user()->id === $anniversary->user_id) {
             $anniversary->delete();
         }
         
         return back();
     }
-    
-    public function anniversariesForm()
-    {
-        return view('anniversaries.form');
-    }
+
     
 }

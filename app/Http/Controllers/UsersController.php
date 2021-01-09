@@ -10,13 +10,21 @@ class UsersController extends Controller
 {
     public function index()
     {
-         // ユーザ一覧をidの降順で取得
-        $users = User::orderBy('id', 'desc')->paginate(10);
+        $data = [];
+        if (\Auth::check()) { // 認証済みの場合
+            // 認証済みユーザを取得
+            $user = \Auth::user();
+            // ユーザの投稿の一覧を作成日時の降順で取得
+            $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
 
-        // ユーザ一覧ビューでそれを表示
-        return view('users.index', [
-            'users' => $users,
-        ]);
+            $data = [
+                'user' => $user,
+                'giving_users' => $giving_users,
+            ];
+        }
+        
+        return view('welcome',$data);
+    
     }
     
     public function show($id)

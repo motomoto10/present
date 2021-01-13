@@ -27,6 +27,19 @@ class AnniversariesController extends Controller
         return view('welcome', $data);
     }
     
+    public function show($id)
+    {
+
+        $giving_user = \App\Giving_user::findOrFail($id);
+        
+        $anniversary = new Anniversary;
+        
+        return view('anniversaries.show',[
+            'anniversary'=> $anniversary,
+            'giving_user' => $giving_user,
+            ]);
+    }
+    
         
     public function create($id)
     {

@@ -27,16 +27,16 @@ class AnniversariesController extends Controller
         return view('welcome', $data);
     }
     
-    public function show($id)
+    public function show($id,$anniversary)
     {
-
+        
         $giving_user = \App\Giving_user::findOrFail($id);
         
-        $anniversary = new Anniversary;
+        $anniversary = \App\Anniversary::findOrFail($anniversary);
         
         return view('anniversaries.show',[
-            'anniversary'=> $anniversary,
             'giving_user' => $giving_user,
+            'anniversary' => $anniversary,
             ]);
     }
     
@@ -85,6 +85,10 @@ class AnniversariesController extends Controller
         }
         
         return back();
+    }
+    public function edit($id)
+    {
+        
     }
 
     

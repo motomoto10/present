@@ -8,21 +8,22 @@ use App\Present;
 
 class PresentsController extends Controller
 {
-    public function create($id)
+    public function create($id, $anniversary)
     {
-
-        $anniversary = \App\Anniversary::findOrFail($id);
+        
+        $anniversaries = \App\Anniversary::findOrFail($anniversary);
         
         $present = new Present;
         
         return view('presents.create',[
-            'anniversary'=> $anniversary,
+            'anniversary'=> $anniversaries,
             'present' => $present,
             ]);
     }
     
-    public function store(Request $request,$id)
+    public function store(Request $request,$id,$anniversary)
     {
+        
         if (\Auth::check()) {
             
             \Auth::user();
@@ -33,7 +34,7 @@ class PresentsController extends Controller
             ]);
             
             $present = new Present;
-            $present->anniversary_id = $id;
+            $present->anniversary_id = $anniversary;
             $present->present = $request->present;
             $present->year = $request->year;
             $present->save();

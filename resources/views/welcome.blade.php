@@ -9,8 +9,9 @@
                 <img class="w-25" src="{{ asset('img/present.png') }}">
                 
                 <!--プレゼントもらう人の登録フォームへ-->
-                <button class="btn btn-default col-sm">{!! link_to_route('giving_user.create', '送りたい相手を登録する', [], ['class' => 'nav-link']) !!}</button>
+                <button class="btn btn-default col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'nav-link']) !!}</button>
                 <button class="btn btn-default col-sm">{!! link_to_route('giving_users.index', '登録した相手を確認する', [], ['class' => 'nav-link']) !!}</button>
+                <button class="btn btn-default col-sm">{!! link_to_route('giving_users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'nav-link']) !!}</button>
             @else
                 <h1>ようこそ！<br>
                 Presentへ！！</h1>

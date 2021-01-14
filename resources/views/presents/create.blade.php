@@ -6,7 +6,7 @@
             @if (Auth::check())
                 <h1>誰に送りますか？</h1>
                 <img class="w-25" src="{{ asset('img/present.png') }}">
-                {!! Form::open(['route' => ['presents.store','id' => $anniversary->id]]) !!}
+                {!! Form::open(['route' => ['presents.store','anniversary' => $anniversary->id,'id' => $anniversary->giving_user_id]]) !!}
                     <div class="form-group">
                         プレゼント：{!! Form::textarea('present', old('present'), ['class' => 'form-control', 'rows' => '1']) !!}
                         送った年：{!! Form::select('year',['21' => '2021','20' => '2020','19' => '2019','18'=>'2018',]) !!}

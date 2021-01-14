@@ -24,28 +24,16 @@
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
         
-        Route::get('giving_user', 'Giving_usersController@index')->name('giving_user.index');
-        Route::get('giving_user', 'Giving_usersController@create')->name('giving_user.create');
-        Route::post('giving_user', 'Giving_usersController@edit')->name('giving_user.edit');
-        Route::post('giving_user', 'Giving_usersController@show')->name('giving_user.show');
-        Route::put('giving_user', 'Giving_usersController@update')->name('giving_user.update');
-        
         Route::resource('giving_users', 'Giving_usersController');
         
         Route::group(['prefix' => 'giving_users/{id}'],function() {
-            Route::get('anniversary', 'AnniversariesController@create')->name('anniversaries.create');
-            Route::post('anniversary','AnniversariesController@store')->name('anniversaries.store');
-            Route::delete('anniversary','AnniversariesController@destroy')->name('anniversaries.destroy');
+            Route::group(['prefix' => 'anniversaries/{anniversary}'],function() {
+            Route::resource('presents', 'PresentsController');
+            });            
             
-            Route::post('anniversary', 'AnniversariesController@edit')->name('anniversaries.edit');
-            Route::post('anniversary', 'AnniversariesController@show')->name('anniversaries.show');
-            Route::put('anniversary', 'AnniversariesController@update')->name('anniversaries.update');
-        });
-        
-        Route::group(['prefix' => 'anniversaries/{id}'],function() {
-            Route::get('present', 'PresentsController@create')->name('presents.create');
-            Route::post('present','PresentsController@store')->name('presents.store');
-            Route::delete('present','PresentsController@destroy')->name('presents.destroy');
+            Route::resource('anniversaries', 'AnniversariesController');
+            
+
             
         });
     });

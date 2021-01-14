@@ -33,6 +33,20 @@ class Giving_usersController extends Controller
         return view('giving_users.create');
     }
     
+    public function show($id)
+    {
+        $data = [];
+        if (\Auth::check()) { // 認証済みの場合
+            $giving_user = \App\Giving_user::findOrFail($id);
+
+            $data = [
+                'giving_user' => $giving_user,
+            ];
+        }
+        
+        return view('giving_users.show',$data);
+    }
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -61,17 +75,5 @@ class Giving_usersController extends Controller
     
 
     
-    public function show()
-    {
-        $data = [];
-        if (\Auth::check()) { // 認証済みの場合
-            $giving_user = \App\Giving_user::findOrFail($id);
 
-            $data = [
-                'giving_users' => $giving_users,
-            ];
-        }
-        
-        return view('giving_users.show',$data);
-    }
 }

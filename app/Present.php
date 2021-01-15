@@ -12,4 +12,17 @@ class Present extends Model
     {
         return $this->belongsTo(anniversary::class);
     }
+    
+    public function anniversary()
+    {
+        return $this->belongsTo(Anniversary::class);
+    }
+    
+    public function favorite_presents()
+    {
+        // このユーザがお気に入り中のプレゼントのidを取得して配列にする
+        $presents = $this->favorite()->pluck('presents.id')->toArray();
+        // それらのユーザが所有する投稿に絞り込む
+        return Present::whereIn('present_id', $presentIds);
+    }
 }

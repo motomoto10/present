@@ -46,4 +46,55 @@ class User extends Authenticatable
     {
         $this->loadCount('giving_users');
     }
+    
+    public function favorites()
+    {
+        return $this->belongsToMany(Present::class,'favorite_present', 'user_id','present_id')->withTimestamps();
+    }
+    
+    public function favorite($presentId)
+    {
+        // すでにいいねしているかの確認
+        $exist = $this->is_favorites($presentId);
+        
+        if($exist) {
+            return false;
+        }else {
+            $this->favorites()->attach($presentId);
+            return true;
+        }
+    }
+    
+    public function unfavorite($presentId)
+    {
+        // すでにいいねしているかの確認
+        $exist = $this->is_favorites($presentId);
+        
+        if($exist) {
+            $this->favorites()->detach($presentId);
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public function is_favorites($presentId)
+    {
+        // お気に入り中micropostの中に $micropostIdのものが存在するか
+        return $this->favorites()->where('present_id', $presentId)->exists();
+    }
+    
+    public function favorite_users()
+    {
+        return $this->belongsToMany(Present::class,'favorite_present', 'user_id','present_id')->withTimestamps();
+    }
+    
+    public function favorite_presents()
+    {
+        // このユーザがお気に入り中のプレゼントのidを取得して配列にする
+        $presents = $this->favorite()->pluck('presents.id')->toArray();
+        // それらのユーザが所有する投稿に絞り込む
+        return Present::whereIn('present_id', $presentIds);
+    }
+    
 }

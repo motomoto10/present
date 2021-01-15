@@ -33,7 +33,19 @@
             
             Route::resource('anniversaries', 'AnniversariesController');
             
+            Route::get('favorite_present','PresentsController@favorite_present')->name('presnts.favorite_present');
+
+            
         });
+        
+        Route::group(['prefix' => 'presents/{id}'],function(){
+            
+            Route::post('favorite','FavoritePresentController@store')->name('presents.favorite');
+            Route::delete('unfavorite','FavoritePresentController@destroy')->name('preesnts.unfavorite');
+        });
+    
+        
+        
     });
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Present;
+use APP\User;
 
 class PresentsController extends Controller
 {
@@ -57,4 +58,20 @@ class PresentsController extends Controller
         
         return back();
     }
+    
+    public function favorite_present($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+        // ユーザのいいねしたプレゼントを取得
+        $favorits = $user->favorites()->paginate(10);
+        
+        // フォロー一覧ビューでそれらを表示
+        return view('users.favorites',[
+            'user' => $user,
+            'presents' => $favorits,
+        ]);
+   }
 }

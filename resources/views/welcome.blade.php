@@ -13,6 +13,11 @@
                 <button class="btn btn-default col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'nav-link']) !!}</button>
             <h1>あなたの登録したプレゼント</h1>
             @include('giving_users.giving_users')
+            
+            <button class="btn btn-default col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'nav-link']) !!}</button>
+            
+            
+            
             @else
                 <h1>ようこそ！<br>
                 Presentへ！！</h1>

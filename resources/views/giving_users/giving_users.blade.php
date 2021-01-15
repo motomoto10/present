@@ -35,7 +35,7 @@
                                                             @if (Auth::id() == $giving_user->user_id)
                                                                 <td>test2</td>
                                                             @else
-                                                                <td>いいね</td>
+                                                                <td>@include('present_favorite.favorite_button')</td>
                                                             @endif
                                                     @endforeach
                                             @if(count($anniversary->presents ) == 0)

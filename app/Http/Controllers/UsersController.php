@@ -38,4 +38,6 @@ class UsersController extends Controller
             'giving_users' => $giving_users,
         ]);
     }
+    
+
 }

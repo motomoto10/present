@@ -12,6 +12,9 @@
                     <img class="rounded img-fluid" src="{{ Gravatar::get($user->email, ['size' => 500]) }}" alt="">
                 </div>
             </div>
+            <div>
+                {!! link_to_route('users.edit', '編集', ['user' => $user->id]) !!}
+            </div>
         </aside>
         <div class="col-sm-8">
             <h2>time line</h2>

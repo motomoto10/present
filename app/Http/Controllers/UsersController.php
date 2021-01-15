@@ -38,6 +38,34 @@ class UsersController extends Controller
             'giving_users' => $giving_users,
         ]);
     }
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        
+         return view('users.edit', [
+            'user' => $user,
+        ]);
+        
+    }
+    
+        public function update(Request $request,$id)
+    {
+        if (\Auth::check()) {
+            
+            \Auth::user();
+                
+            $request->validate([
+                'name' => 'required|max:255',
+            ]);
+            
+            $user = User::findOrFail($id);
+            $user->name  = $request->name;
+            $user->save();
+                
+            return redirect('/');
+        }
+        
+    }
     
 
 }

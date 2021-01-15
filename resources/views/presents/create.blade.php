@@ -4,7 +4,7 @@
     <div class="center">
         <div class="text-center">
             @if (Auth::check())
-                <h1>誰に送りますか？</h1>
+                <h1>{{ $anniversary->giving_user->name }}の{{$anniversary->anniversary}}に何を送りますか？</h1>
                 <img class="w-25" src="{{ asset('img/present.png') }}">
                 {!! Form::open(['route' => ['presents.store','anniversary' => $anniversary->id,'id' => $anniversary->giving_user_id]]) !!}
                     <div class="form-group">

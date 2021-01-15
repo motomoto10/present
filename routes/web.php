@@ -22,7 +22,7 @@
     
     
     Route::group(['middleware' => ['auth']], function () {
-        Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+        Route::resource('users', 'UsersController');
         
         Route::resource('giving_users', 'Giving_usersController');
         

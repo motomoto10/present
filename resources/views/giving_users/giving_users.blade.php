@@ -33,7 +33,7 @@
                                                             <td>{!! (e($present->present)) !!}</td>
                                                             <td>{!! (e($present->year)) !!}</td>
                                                             @if (Auth::id() == $giving_user->user_id)
-                                                                <td>test2</td>
+                                                                <td>編集ボタンをおく</td>
                                                             @else
                                                                 <td>@include('present_favorite.favorite_button')</td>
                                                             @endif
@@ -48,9 +48,9 @@
                                                 <td>{!! (e($anniversary->day->format('n月j日') )) !!}</td>
                                                 <td colspan="2"><button class="btn btn-default col-sm">{!! link_to_route('presents.create', '登録', ['id' => $giving_user->id,'anniversary' => $anniversary->id], []) !!}</button></td>
                                                 @if (Auth::id() == $giving_user->user_id)
-                                                                <td>test2</td>
+                                                                <td>編集ボタンをおく</td>
                                                             @else
-                                                                <td>いいね</td>
+                                                                <td>-</td>
                                                             @endif
                                             @endif
                                             
@@ -64,9 +64,9 @@
                                                 <td colspan="2"><button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', '登録', [$giving_user->id], []) !!}</button></td>
                                                 <td colspan="2">-</td>
                                                 @if (Auth::id() == $giving_user->user_id)
-                                                        <td>test2</td>
+                                                        <td>編集ボタン</td>
                                                     @else
-                                                        <td>いいね</td>
+                                                        <td>-</td>
                                                     @endif
                                                 @endif
                                         </tr>

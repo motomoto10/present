@@ -33,10 +33,8 @@
             
             Route::resource('anniversaries', 'AnniversariesController');
             
-
-            
         });
     });
 
 
-    Route::get('/','UsersController@index');
+    Route::get('/','Giving_usersController@index');

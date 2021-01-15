@@ -38,37 +38,7 @@
                                                                 <td>いいね</td>
                                                             @endif
                                                     @endforeach
-                                            @if(count($anniversary->presents ) == 0)
-                                            <tr>
-                                                <th>{!! (e($giving_user->user->name)) !!}</th>
-                                                <td>{!! link_to_route('giving_users.show', '詳細', ['giving_user' => $giving_user->id]) !!}</td>
-                                                <td>{!! (e($giving_user->name)) !!}</td>
-                                                <td>{!! (e($giving_user->relation)) !!}</td>
-                                                <td>{!! (e($anniversary->anniversary)) !!}</td>
-                                                <td>{!! (e($anniversary->day->format('n月j日') )) !!}</td>
-                                                <td colspan="2"><button class="btn btn-default col-sm">{!! link_to_route('presents.create', '登録', ['id' => $giving_user->id,'anniversary' => $anniversary->id], []) !!}</button></td>
-                                                @if (Auth::id() == $giving_user->user_id)
-                                                                <td>test2</td>
-                                                            @else
-                                                                <td>いいね</td>
-                                                            @endif
-                                            @endif
-                                            
                                             @endforeach
-                                            @if(count($giving_user->anniversaries) == 0)
-                                            <tr>
-                                                <th>{!! (e($giving_user->user->name)) !!}</th>
-                                                <td>{!! link_to_route('giving_users.show', '詳細', ['giving_user' => $giving_user->id]) !!}</td>
-                                                <td>{!! (e($giving_user->name)) !!}</td>
-                                                <td>{!! (e($giving_user->relation)) !!}</td>
-                                                <td colspan="2"><button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', '登録', [$giving_user->id], []) !!}</button></td>
-                                                <td colspan="2">-</td>
-                                                @if (Auth::id() == $giving_user->user_id)
-                                                        <td>test2</td>
-                                                    @else
-                                                        <td>いいね</td>
-                                                    @endif
-                                                @endif
                                         </tr>
                                     @endforeach   
                                 </tbody>

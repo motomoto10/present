@@ -50,13 +50,17 @@ class Giving_usersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'relation' => 'required|max:255',
+            'name' => 'required|max:25',
+            'relation' => 'required|max:25',
+            'gender' => 'required|max:25',
+            'old' => 'required|max:25',
         ]);
         
         $request->user()->giving_users()->create([
             'name' => $request->name,
             'relation' => $request->relation,
+            'gender' => $request->gender,
+            'old' => $request->old,
             ]);
             
             return redirect('/');

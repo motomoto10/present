@@ -32,12 +32,14 @@ class PresentsController extends Controller
             $request->validate([
                 'present' => 'required|max:255',
                 'year' => 'required|max:255',
+                'explain' => 'required|max:255',
             ]);
             
             $present = new Present;
             $present->anniversary_id = $anniversary;
             $present->present = $request->present;
             $present->year = $request->year;
+            $present->explain = $request->explain;
             $present->save();
                 
             return redirect('/');

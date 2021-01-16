@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Present extends Model
 {
-    protected $fillable = ['present','year',];
+    protected $fillable = ['present','year','explain'
+    ];
     
     public function present()
     {

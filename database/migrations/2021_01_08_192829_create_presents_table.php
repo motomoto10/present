@@ -18,6 +18,7 @@ class CreatePresentsTable extends Migration
             $table->unsignedBigInteger('anniversary_id');
             $table->string('present');
             $table->year('year');
+            $table->string('explain')->nullable();
             $table->timestamps();
             
             $table->foreign('anniversary_id')->references('id')->on('anniversaries');

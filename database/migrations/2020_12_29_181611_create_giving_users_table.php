@@ -18,6 +18,8 @@ class CreateGivingUsersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('relation');
+            $table->string('gender')->nullable();
+            $table->string('old')->nullable();
             $table->timestamps();
             
             //外部キー制約

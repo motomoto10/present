@@ -16,7 +16,7 @@ class Present extends Model
     
     public function anniversary()
     {
-        return $this->belongsTo(Anniversary::class);
+        return $this->belongsTo(anniversary::class);
     }
     
     public function favorite_presents()

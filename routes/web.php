@@ -26,6 +26,11 @@
         
         Route::resource('giving_users', 'Giving_usersController');
         
+        // プロフィール画像登録
+        Route::get('/profile', 'ProfileController@index')->name('profile.index');
+        Route::post('/profile', 'ProfileController@store')->name('profile.store');
+        
+        
         Route::group(['prefix' => 'giving_users/{id}'],function() {
             Route::group(['prefix' => 'anniversaries/{anniversary}'],function() {
             Route::resource('presents', 'PresentsController');

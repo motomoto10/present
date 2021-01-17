@@ -5,6 +5,7 @@
         <div class="text-center">
             @if (Auth::check())
                 <h1>あなたの変更です</h1>
+                
                 <img class="w-25" src="{{ asset('img/present.png') }}">
                 {!! Form::open(['route' => ['users.update','user' => $user->id],'method'=>'put']) !!}
                     <div class="form-group">

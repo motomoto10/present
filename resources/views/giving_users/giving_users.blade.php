@@ -3,7 +3,7 @@
     <section>
         <div class="d-flex justify-content-center align-items-center mb-6">
             <div>
-                        <div class="media-body">
+                <div class="media-body">
                             <table class="table table-dark">
                                 <thead>
                                     <tr>

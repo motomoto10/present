@@ -12,8 +12,6 @@ class UsersController extends Controller
     {
         $user = User::orderBy('id', 'desc')->paginate(10);
         
-        
-        
         // ユーザの投稿の一覧を作成日時の降順で取得
 
         // ユーザ一覧ビューでそれを表示

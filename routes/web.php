@@ -24,6 +24,12 @@
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'UsersController');
         
+        Route::group(['prefix' => 'users/{id}'],function() {            
+            Route::get('giving_users','UsersController@giving_users')->name('users.giving_users');
+            Route::get('anniversaries','UsersController@anniversaries')->name('users.anniversaries');
+            Route::get('presents','UsersController@presents')->name('users.presents');
+        });
+        
         Route::resource('giving_users', 'Giving_usersController');
         
         // プロフィール画像登録
@@ -48,7 +54,7 @@
             Route::post('favorite','FavoritePresentController@store')->name('presents.favorite');
             Route::delete('unfavorite','FavoritePresentController@destroy')->name('preesnts.unfavorite');
             
-            Route::resource('comment','CommentController',['only' => ['create','store', 'destroy']]);
+            Route::resource('comment','Comment_presentsController',['only' => ['create','store', 'destroy']]);
         });
     
         

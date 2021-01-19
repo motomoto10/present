@@ -99,7 +99,7 @@ class User extends Authenticatable
     
     public function comments()
     {
-        return $this->belongsToMany(Present::class,'comment_present', 'user_id','present_id')->withTimestamps();
+        return $this->belongsToMany(Present::class,'comments', 'user_id','present_id')->withTimestamps();
     }
     
 }

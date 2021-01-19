@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Giving_user;
 
 class UsersController extends Controller
 {
@@ -65,5 +66,51 @@ class UsersController extends Controller
         
     }
     
+    public function giving_users($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+        // ユーザのいいねしたプレゼントを取得
+        $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
+        // フォロー一覧ビューでそれらを表示
+        return view('users.giving_user',[
+            'user' => $user,
+            'giving_users' => $giving_users,
+        ]);
+    }
+    
+    public function anniversaries($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+        // ユーザのいいねしたプレゼントを取得
+        $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
+        // フォロー一覧ビューでそれらを表示
+        return view('users.anniversary',[
+            'user' => $user,
+            'giving_users' => $giving_users,
+        ]);
+    }
+    
+    public function presents($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+        // ユーザのいいねしたプレゼントを取得
+        $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
+
+        // フォロー一覧ビューでそれらを表示
+        return view('users.presents',[
+            'user' => $user,
+            'giving_users' => $giving_users,
+
+        ]);
+    }
 
 }

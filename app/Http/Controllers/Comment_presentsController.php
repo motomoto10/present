@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use \App\Comment;
 use \App\User;
 
-class CommentController extends Controller
+class Comment_presentsController extends Controller
 {
     
     public function create($id)
@@ -30,6 +30,7 @@ class CommentController extends Controller
         $comment = new Comment;
         $comment->comment = $request->comment;
         $comment->user_id = \Auth::user()->id;
+        $comment->present_id =$id;
         $comment->save();
                 
             return redirect('/');

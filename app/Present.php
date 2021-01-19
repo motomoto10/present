@@ -20,7 +20,7 @@ class Present extends Model
     }
     public function comment()
     {
-        return $this->belongsToMany(User::class,'comment_present','present_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(User::class,'comments','present_id', 'user_id')->withTimestamps();
     }
     
     public function anniversary()

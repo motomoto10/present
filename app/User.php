@@ -44,7 +44,7 @@ class User extends Authenticatable
     
     public function loadRelationshipCounts()
     {
-        $this->loadCount('giving_users');
+        $this->loadCount('giving_users','favorites','comments');
     }
     
     public function favorites()
@@ -95,6 +95,11 @@ class User extends Authenticatable
         $presents = $this->favorite()->pluck('presents.id')->toArray();
         // それらのユーザが所有する投稿に絞り込む
         return Present::whereIn('present_id', $presentIds);
+    }
+    
+    public function comments()
+    {
+        return $this->belongsToMany(Present::class,'comment_present', 'user_id','present_id')->withTimestamps();
     }
     
 }

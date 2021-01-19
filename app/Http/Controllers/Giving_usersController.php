@@ -30,7 +30,14 @@ class Giving_usersController extends Controller
     
     public function create()
     {
-        return view('giving_users.create');
+        $genders = Giving_user::$genders;
+        
+        $relation = Giving_user::$relation;
+        
+        $old = Giving_user::$old;
+
+        
+        return view('giving_users.create',compact( 'genders','relation','old'));
     }
     
     public function show($id)

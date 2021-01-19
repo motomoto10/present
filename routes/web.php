@@ -47,6 +47,8 @@
             
             Route::post('favorite','FavoritePresentController@store')->name('presents.favorite');
             Route::delete('unfavorite','FavoritePresentController@destroy')->name('preesnts.unfavorite');
+            
+            Route::resource('comment','CommentController',['only' => ['create','store', 'destroy']]);
         });
     
         

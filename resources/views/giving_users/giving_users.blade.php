@@ -33,7 +33,7 @@
                                                             <td>{!! (e($present->present)) !!}</td>
                                                             <td>{!! (e($present->year)) !!}</td>
                                                             @if (Auth::id() == $giving_user->user_id)
-                                                                <td>編集ボタンをおく</td>
+                                                                <td>いいねの数{{ $present->favorite->count() }}</td>
                                                             @else
                                                                 <td>@include('present_favorite.favorite_button')</td>
                                                             @endif
@@ -61,6 +61,8 @@
                                                 <td>{!! link_to_route('giving_users.show', '詳細', ['giving_user' => $giving_user->id]) !!}</td>
                                                 <td>{!! (e($giving_user->name)) !!}</td>
                                                 <td>{!! (e($giving_user->relation)) !!}</td>
+                                                <td>{!! (e($giving_user->gender)) !!}</td>
+                                                <td>{!! (e($giving_user->old)) !!}</td>
                                                 <td colspan="2"><button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', '登録', [$giving_user->id], []) !!}</button></td>
                                                 <td colspan="2">-</td>
                                                 @if (Auth::id() == $giving_user->user_id)

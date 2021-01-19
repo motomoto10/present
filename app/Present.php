@@ -14,6 +14,15 @@ class Present extends Model
         return $this->belongsTo(anniversary::class);
     }
     
+    public function favorite()
+    {
+        return $this->belongsToMany(User::class,'favorite_present','present_id', 'user_id')->withTimestamps();
+    }
+    public function comment()
+    {
+        return $this->belongsToMany(User::class,'comment_present','present_id', 'user_id')->withTimestamps();
+    }
+    
     public function anniversary()
     {
         return $this->belongsTo(anniversary::class);

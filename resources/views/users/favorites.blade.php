@@ -43,7 +43,8 @@
                                                             @if (Auth::id() == $present->anniversary->giving_user->user_id)
                                                                 <td>test2</td>
                                                             @else
-                                                                <td>いいね</td>
+                                                            <td>いいねの数{{ $present->comment->count() }}</td>
+                                                            <td><button class="btn btn-default col-sm">{!! link_to_route('comment.create', 'コメント', ['id' => $present->id], ['class' => 'nav-link']) !!}</button></td>
                                                             @endif
                                                     @endforeach
                                         </tr>

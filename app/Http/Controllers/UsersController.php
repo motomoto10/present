@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Giving_user;
+use App\anniversary;
+use App\Present;
 
 class UsersController extends Controller
 {
     public function index()
     {
-        $user = User::orderBy('id', 'desc')->paginate(10);
+        $user = User::orderBy('id', 'desc')->paginate(20);
         
         // ユーザの投稿の一覧を作成日時の降順で取得
 
@@ -30,20 +32,28 @@ class UsersController extends Controller
         $user->loadRelationshipCounts();
         
         $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
+        
 
+        
+        $anniversaries = \App\Anniversary::findOrFail($id);
+        
+        
+        
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
             'giving_users' => $giving_users,
+            'anniversaries' => $anniversaries,
+            
         ]);
     }
     public function edit($id)
     {
         $user = User::findOrFail($id);
         
-         return view('users.edit', [
-            'user' => $user,
-        ]);
+        $genders = Giving_user::$genders;
+        
+        return view('users.edit',compact('user','genders'));
         
     }
     
@@ -59,6 +69,9 @@ class UsersController extends Controller
             
             $user = User::findOrFail($id);
             $user->name  = $request->name;
+            $user->gender  = $request->gender;
+            $user->born  = $request->born;
+            $user->myself  = $request->myself;
             $user->save();
                 
             return redirect('/');
@@ -72,8 +85,10 @@ class UsersController extends Controller
         
         // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
-        // ユーザのいいねしたプレゼントを取得
-        $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
+        // 登録されたユーザーを取得
+        // おかしい
+        $giving_users = Giving_user::where('user_id',$user_id)->firstOrFail();
+
         // フォロー一覧ビューでそれらを表示
         return view('users.giving_user',[
             'user' => $user,
@@ -85,11 +100,12 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($user_id);
         
-        // 関係するモデルの件数をロード
+        // 関係するモデルの件数���ロード
         $user->loadRelationshipCounts();
         // ユーザのいいねしたプレゼントを取得
-        $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
-        // フォロー一覧ビューでそれらを表示
+        $giving_users = $user->giving_users()->orderBy('created_at', 'desc');
+        
+        // 一覧ビューでそれらを表示
         return view('users.anniversary',[
             'user' => $user,
             'giving_users' => $giving_users,
@@ -103,13 +119,12 @@ class UsersController extends Controller
         // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
         // ユーザのいいねしたプレゼントを取得
-        $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
-
+        $giving_users = $user->giving_users()->orderBy('created_at', 'desc');
+        
         // フォロー一覧ビューでそれらを表示
         return view('users.presents',[
             'user' => $user,
             'giving_users' => $giving_users,
-
         ]);
     }
 

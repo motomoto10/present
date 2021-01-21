@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','born','gender','myself'
     ];
 
     /**
@@ -37,9 +37,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    static $genders = [
+        '男', '女','その他'
+    ];
+    
+    
     public function giving_users()
     {
         return $this->hasMany(Giving_user::class);
+    }
+    
+    public function anniversaries()
+    {
+        return $this->hasManyThrough('App\anniversary','App\Giving_user','user_id','giving_user_id','id','id');
     }
     
     public function loadRelationshipCounts()
@@ -80,7 +90,7 @@ class User extends Authenticatable
     
     public function is_favorites($presentId)
     {
-        // お気に入り中micropostの中に $micropostIdのものが存在するか
+        // お気に入り中presenttの中に $presemttIdのものが存在するか
         return $this->favorites()->where('present_id', $presentId)->exists();
     }
     

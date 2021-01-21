@@ -8,10 +8,6 @@ class Anniversary extends Model
 {
     protected $fillable = ['day','anniversary',];
     
-    public function anniversary()
-    {
-        return $this->belongsTo(Giving_user::class);
-    }
     
     public function giving_user()
     {

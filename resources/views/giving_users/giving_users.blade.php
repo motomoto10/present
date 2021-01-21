@@ -1,5 +1,3 @@
-@if (count($giving_users) > 0)
-    
     <section>
         <div class="d-flex justify-content-center align-items-center mb-6">
             <div>
@@ -77,11 +75,6 @@
                             </table>
                         </div>
                 {{-- ページネーションのリンク --}}
-    <div>{{ $giving_users->links() }}</div>
             </div>
         </div>
     </section>
-
-    
-    
-@endif

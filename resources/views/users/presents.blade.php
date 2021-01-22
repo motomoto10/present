@@ -3,10 +3,8 @@
 @section('content')
     <div class="row">
         @include('users.card')
-        
-    <div class="col-sm-12">
         @include('users.navtab')
-        <div class="media-body">
+    </div>
     <div class="card-deck container" >
         <div class="row">
         @foreach ($giving_users as $giving_user)
@@ -28,6 +26,4 @@
         </div>
     </div>
 </div>
-        </div>
-    </div>
 @endsection

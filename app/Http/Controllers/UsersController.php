@@ -86,8 +86,7 @@ class UsersController extends Controller
         // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
         // 登録されたユーザーを取得
-        // おかしい
-        $giving_users = Giving_user::where('user_id',$user_id)->firstOrFail();
+        $giving_users = Giving_user::where('user_id',$user_id)->get();
 
         // フォロー一覧ビューでそれらを表示
         return view('users.giving_user',[
@@ -102,8 +101,8 @@ class UsersController extends Controller
         
         // 関係するモデルの件数���ロード
         $user->loadRelationshipCounts();
-        // ユーザのいいねしたプレゼントを取得
-        $giving_users = $user->giving_users()->orderBy('created_at', 'desc');
+        // 登録されたユーザーを取得
+        $giving_users = Giving_user::where('user_id',$user_id)->get();
         
         // 一覧ビューでそれらを表示
         return view('users.anniversary',[
@@ -119,7 +118,7 @@ class UsersController extends Controller
         // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
         // ユーザのいいねしたプレゼントを取得
-        $giving_users = $user->giving_users()->orderBy('created_at', 'desc');
+        $giving_users = Giving_user::where('user_id',$user_id)->get();
         
         // フォロー一覧ビューでそれらを表示
         return view('users.presents',[

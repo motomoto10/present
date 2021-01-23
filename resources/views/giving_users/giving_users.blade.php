@@ -75,6 +75,7 @@
                             </table>
                         </div>
                 {{-- ページネーションのリンク --}}
+    <div>{{ $giving_users->links() }}</div>
             </div>
         </div>
     </section>

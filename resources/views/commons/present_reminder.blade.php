@@ -1,5 +1,4 @@
-<div class="media-body">
-    <div class="card-deck container" >
+    <div class="card-deck container">
         <div class="row">
         @foreach ($giving_users as $giving_user)
             @foreach ($giving_user->anniversaries as $anniversary)
@@ -19,4 +18,3 @@
             @endforeach
         </div>
     </div>
-</div>

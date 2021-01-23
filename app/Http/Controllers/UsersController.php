@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Giving_user;
-use App\anniversary;
+use App\Anniversary;
 use App\Present;
 
 class UsersController extends Controller

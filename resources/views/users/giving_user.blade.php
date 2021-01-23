@@ -4,6 +4,7 @@
     <div class="row">
         @include('users.card')
         @include('users.navtab')
+        @include('navarea.giving_users')
     </div>
-    @include('giving_users.giving_users')
+    
 @endsection

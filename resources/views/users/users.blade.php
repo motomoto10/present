@@ -17,6 +17,7 @@
                                     <p>これまでに登録した人数{{ $user->giving_users->count() }}</p>
                                     <p>これまでに登録したお祝い数{{ $user->anniversaries->count()}}</p>
                                     <p>獲得したいいね数</p>
+                                    {!! link_to_route('users.show', 'ユーザーの詳細へ', ['user' => $user->id]) !!}
                                 </div>
                             </div>
                         </div>

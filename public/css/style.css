@@ -126,6 +126,7 @@
   position: relative;
   display: inline-block;
   padding: 0.25em 0.5em;
+  width:40%;
   text-decoration: none;
   color: #FFF;
   background: #fd9535;/*背景色*/
@@ -135,15 +136,18 @@
   font-weight: bold;
 }
 
-.btn-square-pop:active {
+.btn-square-pop:hover {
   border-bottom: solid 2px #fd9535;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
 }
 
 .btn-square-green {
   position: relative;
   display: inline-block;
   padding: 0.25em 0.5em;
+  width:40%;
   text-decoration: none;
   color: #FFF;
   background: #90EE90;/*背景色*/
@@ -153,15 +157,18 @@
   font-weight: bold;
 }
 
-.btn-square-green:active {
+.btn-square-green:hover {
   border-bottom: solid 2px #90EE90;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
 }
 
 .btn-square-pink {
   position: relative;
   display: inline-block;
   padding: 0.25em 0.5em;
+  width:40%;
   text-decoration: none;
   color: #FFF;
   background: #FFC0CB;/*背景色*/
@@ -171,9 +178,11 @@
   font-weight: bold;
 }
 
-.btn-square-pink:active {
+.btn-square-pink:hover {
   border-bottom: solid 2px #FFC0CB;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
 }
 
 .btn-flat-dashed-border {

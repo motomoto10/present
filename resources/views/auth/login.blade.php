@@ -20,7 +20,7 @@
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('ログインする', ['class' => 'btn btn-danger btn-block']) !!}
+                {!! Form::submit('ログインする', ['class' => 'btn btn-flat-border btn-block']) !!}
             {!! Form::close() !!}
 
             {{-- ユーザ登録ページへのリンク --}}

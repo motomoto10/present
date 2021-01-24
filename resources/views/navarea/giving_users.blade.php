@@ -11,8 +11,10 @@
                             <p>性別：{!! (e($giving_user->gender)) !!}</p>
                             <p>年齢：{!! (e($giving_user->old)) !!}</p>
                             <p>登録したお祝い数{{ $giving_user->anniversaries->count()}}</p>
-                            <button class="btn btn-default col-sm">{!! link_to_route('giving_users.show', '詳細へ', ['giving_user' => $giving_user->id], []) !!}</button>
-                            <button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', 'お祝いを登録', ['id' => $giving_user->id], []) !!}</button>
+                            <button class="btn btn-default col-sm">{!! link_to_route('giving_users.show', '詳細へ', ['giving_user' => $giving_user->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
+                            @if (Auth::id() == $user->id)
+                            <button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', 'お祝いを登録', ['id' => $giving_user->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
+                            @endif
                         </div>
                       </div>
                     </div>

@@ -9,13 +9,13 @@
                 <img class="w-25" src="{{ asset('img/present.png') }}">
                 
                 <!--プレゼントもらう人の登録フォームへ-->
-                <button class="btn btn-default col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'nav-link']) !!}</button>
-                <button class="btn btn-default col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'nav-link']) !!}</button>
+                <button class="btn btn-default col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'btn-square-pop']) !!}</button>
+                <button class="btn btn-default col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'btn-square-green']) !!}</button>
             <h1>あなたの登録したプレゼント</h1>
             @include('commons.present_reminder')
             @include('giving_users.giving_users')
             
-            <button class="btn btn-default col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'nav-link']) !!}</button>
+            <button class="btn btn-default col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'btn-square-pink']) !!}</button>
             
             
             
@@ -26,12 +26,12 @@
                 <h2 class="mb-4">あなたの大切な人へプレゼントを送りましょう</h2>
                     <div class='btn_wrapper mb-3'>
                         {{-- ユーザ登録ページへのリンク --}}
-                        <button class="btn btn-default col-sm">{!! link_to_route('signup.get', '新規登録はこちらから！', [], ['class' => 'nav-link']) !!}</button>
+                        <button class="btn btn-default col-sm">{!! link_to_route('signup.get', '新規登録はこちらから！', [], ['class' => 'btn-flat-logo']) !!}</button>
                         {{-- ログインページへのリンク --}}
                         <button class="btn btn-default col-sm">{!! link_to_route('login', 'ログインはこちらから！', [], ['class' => 'nav-link']) !!}</button>
                     </div>
                     <section>
-                        <div class="about_wrapper">
+                        <div class="box15">
                             <h2 class="display-4 mb-4">Presentとは？？</h2>
                             <p>
                                 贈り物をもらうと心が温まりますよね。<br>

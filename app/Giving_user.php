@@ -28,7 +28,7 @@ class Giving_user extends Model
     
     public function anniversaries()
     {
-        return $this->hasMany(anniversary::class);
+        return $this->hasMany(Anniversary::class);
     }
     
     public function loadRelationshipCounts()

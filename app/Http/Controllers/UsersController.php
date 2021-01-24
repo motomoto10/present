@@ -99,7 +99,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($user_id);
         
-        // 関係するモデルの件数���ロード
+        // 関係するモデルの件数ロード
         $user->loadRelationshipCounts();
         // 登録されたユーザーを取得
         $giving_users = Giving_user::where('user_id',$user_id)->get();
@@ -117,7 +117,7 @@ class UsersController extends Controller
         
         // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
-        // ユーザのいいねしたプレゼントを取得
+        // ユーザの投稿したユーザーを取得
         $giving_users = Giving_user::where('user_id',$user_id)->get();
         
         // フォロー一覧ビューでそれらを表示

@@ -6,13 +6,13 @@
         @include('users.navtab')
     </div>
     
-    <div class="card-deck container" >
-        <div class="row">
+    <div class="container" >
+        <div class="row justify-content-center">
             @foreach ($presents as $present)
-                    <div class="col-sm-4 mb-2">
-                                <div class="card text-black bg-right" style="max-width: 18rem;">
-                                  <div class="card-header">{!! (e($present->anniversary->giving_user->user->name)) !!}</div>
-                                  <div class="card-body">
+                    <div class="col-sm-3 m-2 box25">
+                                <div class="text-center">
+                                  <div>{!! (e($present->anniversary->giving_user->user->name)) !!}</div>
+                                  <div>
                                     <p>{!! (e($present->anniversary->giving_user->name)) !!}</p>
                                     <p>{!! (e($present->anniversary->giving_user->relation)) !!}</p>
                                     <p>{!! (e($present->anniversary->anniversary)) !!}</p>

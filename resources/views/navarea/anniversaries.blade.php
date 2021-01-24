@@ -1,11 +1,11 @@
- <div class="card-deck container" >
-        <div class="row">
+ <div class="container" >
+        <div class="row justify-content-center">
         @foreach ($giving_users as $giving_user)
             @foreach ($giving_user->anniversaries as $anniversary)
-                    <div class="col-sm-4 mb-2">
-                                <div class="card text-black bg-right" style="max-width: 18rem;">
-                                  <div class="card-header">{!! (e($giving_user->name)) !!}</div>
-                                  <div class="card-body">
+                    <div class="col-sm-3 mb-2">
+                                <div class="box25">
+                                  <div>{!! (e($giving_user->name)) !!}</div>
+                                  <div>
                                     <p>{!! (e($giving_user->relation)) !!}</p>
                                     <p>{!! (e($giving_user->gender)) !!}</p>
                                     <p>{!! (e($giving_user->old)) !!}</p>

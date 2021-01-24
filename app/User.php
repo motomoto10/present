@@ -49,12 +49,12 @@ class User extends Authenticatable
     
     public function anniversaries()
     {
-        return $this->hasManyThrough('App\anniversary','App\Giving_user','user_id','giving_user_id','id','id');
+        return $this->hasManyThrough('App\Anniversary','App\Giving_user','user_id','giving_user_id','id','id');
     }
     
     public function loadRelationshipCounts()
     {
-        $this->loadCount('giving_users','favorites','comments');
+        $this->loadCount('giving_users','favorites','comments','favorite_users');
     }
     
     public function favorites()
@@ -90,7 +90,7 @@ class User extends Authenticatable
     
     public function is_favorites($presentId)
     {
-        // お気に入り中presenttの中に $presemttIdのものが存在するか
+        // お気に入り中presenttの中に $presentIdのものが存在するか
         return $this->favorites()->where('present_id', $presentId)->exists();
     }
     

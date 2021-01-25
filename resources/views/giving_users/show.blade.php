@@ -7,26 +7,31 @@
                 <h1>{!! ($giving_user->user->name) !!}から{!! ($giving_user->name) !!}へ贈ったプレゼントの詳細です</h1>
                 <img class="w-25" src="{{ asset('img/present.png') }}">
                 
-                <button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', 'この人のお祝いを登録する', [$giving_user->id], ['class' => 'nav-link']) !!}</button>
+                <button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', 'この人のお祝いを登録する', [$giving_user->id], ['class' => 'btn-square-green']) !!}</button>
             @endif
         </div>
-         <div class="card-deck container" >
-        <div class="row">
+          <div class="container" >
+        <div class="row justify-content-center">
             @foreach ($giving_user->anniversaries as $anniversary)
-                    <div class="col-sm-4 mb-2">
-                                <div class="card text-black bg-right" style="max-width: 18rem;">
-                                  <div class="card-header">{!! (e($giving_user->name)) !!}</div>
-                                  <div class="card-body">
-                                    <p>{!! (e($giving_user->relation)) !!}</p>
-                                    <p>{!! (e($giving_user->gender)) !!}</p>
-                                    <p>{!! (e($giving_user->old)) !!}</p>
-                                    <p>{!! (e($anniversary->anniversary)) !!}</p>
-                                    <p>{!! (e($anniversary->day->format('n月j日'))) !!}</p>
-                                    <button class="btn btn-default col-sm">{!! link_to_route('anniversaries.show', 'お祝いの詳細', ['id' => $giving_user->id,'anniversary' =>$anniversary->id], []) !!}</button>
+                    <div class="col-sm-3 m-2">
+                                <div class="box25">
+                                  <div class="text-black text-center">
+                                  <div>{!! (e($giving_user->name)) !!}</div>
+                                  <div>
+                                    <p>関係性：{!! (e($giving_user->relation)) !!}</p>
+                                    <p>性別：{!! (e($giving_user->gender)) !!}</p>
+                                    <p>年齢：{!! (e($giving_user->old)) !!}</p>
+                                    <p>お祝い：{!! (e($anniversary->anniversary)) !!}</p>
+                                    <p>日程：{!! (e($anniversary->day->format('n月j日'))) !!}</p>
+                                    <button class="btn col-sm">{!! link_to_route('anniversaries.show', 'お祝いの詳細', ['id' => $giving_user->id,'anniversary' =>$anniversary->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
+                                    @if (Auth::id() == $giving_user->user_id)
+                                    <button class="btn col-sm">{!! link_to_route('presents.create', 'プレゼントを登録', ['id' => $giving_user->id,'anniversary' => $anniversary->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
+                                    @endif
                                 </div>
+                              </div>
                             </div>
                     </div>
-                @endforeach  
+                @endforeach
         </div>
     </div>
     </div>

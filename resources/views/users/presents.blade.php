@@ -15,7 +15,7 @@
                                   <div>{!! (e($giving_user->name)) !!}</div>
                                   <div>
                                     <h5>{!! (e($giving_user->relation)) !!}の{!! (e($anniversary->anniversary)) !!}</h5>
-                                    <p>{!! (e($anniversary->presents)) !!}</p>
+                                    <p>{!! (e($anniversary->presents->year)) !!}</p>
                                     <p>{!! (e($anniversary->presents)) !!}</p>
                                     <button class="btn btn-default col-sm">{!! link_to_route('presents.create', 'プレゼントを登録', ['id' => $giving_user->id,'anniversary' => $anniversary->id], []) !!}</button>
                                 </div>

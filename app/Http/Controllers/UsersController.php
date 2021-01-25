@@ -120,6 +120,17 @@ class UsersController extends Controller
         // ユーザの投稿したユーザーを取得
         $giving_users = Giving_user::where('user_id',$user_id)->get();
         
+        $anniversary = anniversary::where('user_id',$user_id)->get();
+    
+        $anniversaryIds = $anniversary->pluck('anniversaries.id')->toArray();
+        
+            dd($anniversaryIds);
+    
+        
+        $present = Present::where('anniversary_id',$anniversaryIds)->get();
+        
+        dd($present);
+        
         // フォロー一覧ビューでそれらを表示
         return view('users.presents',[
             'user' => $user,

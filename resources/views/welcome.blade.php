@@ -7,17 +7,12 @@
                 <h1>さあ！<br>
                 プレゼントを送りましょう</h1>
                 <img class="w-25" src="{{ asset('img/present.png') }}">
-                
-                <!--プレゼントもらう人の登録フォームへ-->
-                <button class="btn btn-default col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'btn-square-pop btn-hover']) !!}</button>
-                <button class="btn btn-default col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'btn-square-green']) !!}</button>
-            <h1>あなたの登録したプレゼント</h1>
+            <h2 class="">もうすぐ記念日の人がいます！</h2>
             @include('commons.present_reminder')
-            @include('giving_users.giving_users')
-            
-            <button class="btn btn-default col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'btn-square-pink']) !!}</button>
-            
-            
+                <!--プレゼントもらう人の登録フォームへ-->
+                <button class="btn col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'btn-square-pop btn-hover']) !!}</button>
+                <button class="btn col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'btn-square-green']) !!}</button>
+                <button class="btn col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'btn-square-pink']) !!}</button>
             
             @else
                 <h1>ようこそ！<br>

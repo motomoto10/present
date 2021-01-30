@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Present;
 use APP\User;
+use App\Anniversary;
 
 class PresentsController extends Controller
 {
@@ -46,19 +47,17 @@ class PresentsController extends Controller
         }
     }
     
-    public function destroy($id)
+    public function destroy($present,$anniversary,$id)
     {
-        $present = \App\Present::findOrFail($id);
+        $anniversary =  \App\Anniversary::findOrFail($anniversary);
         
-        $anniversary_id = $present->anniversary_id;
-        
-        $anniversary =  \App\Anniversary::findOrFail($anniversary_id);
+        $presents = Present::findOrFail($id);
         
         if(\Auth::user()->id === $anniversary->user_id) {
-            $present->delete();
+            $presents->delete();
         }
         
-        return back();
+        return redirect('/');
     }
     
     public function favorite_present($user_id)
@@ -74,6 +73,19 @@ class PresentsController extends Controller
         return view('users.favorites',[
             'user' => $user,
             'presents' => $favorits,
+        ]);
+   }
+   
+       public function show($present,$anniversary,$id)
+    {   
+        $presents = Present::findOrFail($id);
+        
+        $anniversary = Anniversary::findOrFail($anniversary);
+        
+        // 一覧ビューでそれらを表示
+        return view('presents.show',[
+            'anniversary' => $anniversary,
+            'present' => $presents,
         ]);
    }
 }

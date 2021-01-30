@@ -9,11 +9,6 @@ class Present extends Model
     protected $fillable = ['present','year','explain'
     ];
     
-    public function present()
-    {
-        return $this->belongsTo(anniversary::class);
-    }
-    
     public function favorite()
     {
         return $this->belongsToMany(User::class,'favorite_present','present_id', 'user_id')->withTimestamps();

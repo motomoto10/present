@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\anniversary;
+use App\Anniversary;
+use App\Present;
 
 class AnniversariesController extends Controller
 {
@@ -32,11 +33,14 @@ class AnniversariesController extends Controller
         
         $giving_user = \App\Giving_user::findOrFail($id);
         
-        $anniversary = \App\Anniversary::findOrFail($anniversary);
+        $anniversaries = \App\Anniversary::findOrFail($anniversary);
+        
+        $presents = Present::where('anniversary_id',$anniversary)->get();
         
         return view('anniversaries.show',[
             'giving_user' => $giving_user,
-            'anniversary' => $anniversary,
+            'anniversary' => $anniversaries,
+            'presents' => $presents,
             ]);
     }
     

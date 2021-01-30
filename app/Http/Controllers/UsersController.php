@@ -33,8 +33,6 @@ class UsersController extends Controller
         
         $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
         
-
-        
         $anniversaries = \App\Anniversary::findOrFail($id);
         
         
@@ -120,21 +118,16 @@ class UsersController extends Controller
         // ユーザの投稿したユーザーを取得
         $giving_users = Giving_user::where('user_id',$user_id)->get();
         
-        $anniversary = anniversary::where('user_id',$user_id)->get();
-    
-        $anniversaryIds = $anniversary->pluck('anniversaries.id')->toArray();
+        $anniversary = Anniversary::where('user_id',$user_id)->get();
         
-            dd($anniversaryIds);
-    
-        
-        $present = Present::where('anniversary_id',$anniversaryIds)->get();
-        
-        dd($present);
+        $present = Present::where('anniversary_id',$anniversary[0]->id)->get();
         
         // フォロー一覧ビューでそれらを表示
         return view('users.presents',[
             'user' => $user,
             'giving_users' => $giving_users,
+            'anniversary'=> $anniversary,
+            'present' => $present,
         ]);
     }
 

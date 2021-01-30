@@ -9,7 +9,8 @@
     </div>
     <div class="container" >
         <div class="row justify-content-center">
-                    <div class="col-sm-3 m-2 box25">
+                    <div class="col-sm-3 m-2">
+                        <div class="box-yellow">
                         <div class="text-center">
                             <p>{!! (e($anniversary->giving_user->user->name)) !!}から</p>
                             <p>{!! (e($anniversary->giving_user->name)) !!}へのプレゼント</p>
@@ -24,6 +25,7 @@
                             <p>コメントの数{{ $present->comment->count()}}</p>
                             @include('present_favorite.favorite_button')
                             @include('presents.destroy_button')
+                        </div>
                         </div>
                     </div>
         </div>

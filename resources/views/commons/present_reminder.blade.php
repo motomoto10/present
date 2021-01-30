@@ -3,7 +3,8 @@
         @foreach ($giving_users as $giving_user)
             @foreach ($giving_user->anniversaries as $anniversary)
                     @if(count($anniversary->presents ) == 0)
-                    <div class="col-sm-3 m-2 box25">
+                    <div class="col-sm-3 m-2 ">
+                        <div class="box25">
                                 <div class="text-black text-center">
                                   <div>{!! (e($giving_user->name)) !!}</div>
                                   <div>
@@ -12,6 +13,7 @@
                                     <button class="btn btn-default col-sm">{!! link_to_route('presents.create', 'プレゼントを登録', ['id' => $giving_user->id,'anniversary' => $anniversary->id], []) !!}</button>
                                 </div>
                             </div>
+                        </div>
                     </div>
                     @endif
                 @endforeach  

@@ -10,9 +10,9 @@
             <h2 class="">もうすぐ記念日の人がいます！</h2>
             @include('commons.present_reminder')
                 <!--プレゼントもらう人の登録フォームへ-->
-                <button class="btn col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'btn-square-pop btn-hover']) !!}</button>
-                <button class="btn col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'btn-square-green']) !!}</button>
-                <button class="btn col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'btn-square-pink']) !!}</button>
+                <div class="btn col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'btn-square-pop btn-hover']) !!}</div>
+                <div class="btn col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'btn-square-green']) !!}</div>
+                <div class="btn col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'btn-square-pink']) !!}</div>
             
             @else
                 <h1>ようこそ！<br>

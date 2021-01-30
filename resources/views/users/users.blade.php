@@ -10,7 +10,6 @@
                             <div class="col-8 ">
                                 <div>
                                     <h3>{{ $user->name }}</h3>
-                                    <p>称号</p>
                                     <p>{{ $user->gender}}　{{ $user->born}}</p>
                                     <p>自己紹介:{{ $user->myself}}</p>
                                     <p>これまでに登録した人数{{ $user->giving_users->count() }}</p>

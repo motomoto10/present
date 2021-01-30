@@ -1,7 +1,8 @@
  <div class="container" >
         <div class="row justify-content-center">
         @foreach ($giving_users as $giving_user)
-                    <div class="col-sm-3 m-2 box25">
+                    <div class="col-sm-3 m-2 ">
+                      <div class="box-lavender">
                       <div class="text-black text-center">
                         <div>
                           <h3>{!! (e($giving_user->name)) !!}</h3>
@@ -16,6 +17,7 @@
                             <button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', 'お祝いを登録', ['id' => $giving_user->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
                             @endif
                         </div>
+                      </div>
                       </div>
                     </div>
             @endforeach

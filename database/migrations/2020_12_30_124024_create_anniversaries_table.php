@@ -21,8 +21,8 @@ class CreateAnniversariesTable extends Migration
             $table->string('anniversary');
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('giving_user_id')->references('id')->on('giving_users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('giving_user_id')->references('id')->on('giving_users')->onDelete('cascade');
         });
     }
 

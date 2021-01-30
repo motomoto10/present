@@ -1,5 +1,4 @@
 <div class="col-12 mb-3">
-    <h2>Your DETA</h2>
     <div class="box25">
         <div class="row no-gutters">
             <div class="col-3 col-img">
@@ -14,7 +13,6 @@
                     @if (Auth::id() == $user->id)
                         {!! link_to_route('users.edit', 'プロフィールを変更する', ['user' => $user->id],['class' => 'btn-flat-dashed-border']) !!}
                     @endif
-                    <p>称号</p>
                     <p>{{ $user->gender}}/{{ $user->born}}</p>
                     <p>自己紹介:{{ $user->myself}}</p>
                     <p>これまでに登録した人数{{ $user->giving_users->count() }}</p>

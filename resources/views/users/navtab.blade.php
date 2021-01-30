@@ -2,31 +2,25 @@
     <ul class="nav nav-tabs nav-justified mb-3">
         {{-- いいね一覧タブ --}}
         <li class="nav-item">
-            <a href="{{ route('presnts.favorite_present', ['id' => $user->id]) }}" class="nav-link">
-                いいね一覧
-                <span class="badge badge-secondary"></span>
-            </a>
+            
+        <button class="btn col-sm">{!! link_to_route('presnts.favorite_present', 'いいね一覧', ['id' => $user->id], ['class' => 'btn-full-green']) !!}</button>
+
         </li>
         {{-- giving_user一覧タブ --}}
         <li class="nav-item">
-            <a href="{{ route('users.giving_users', ['id' => $user->id]) }}" class="nav-link">
-                プレゼントをあげる人一覧
-                <span class="badge badge-secondary">{{ $user->giving_user }}</span>
-            </a>
+            
+        <button class="btn col-sm">{!! link_to_route('users.giving_users', 'プレゼントをあげる人一覧', ['id' => $user->id], ['class' => 'btn-full-blue']) !!}</button>
+
         </li>
         {{-- anniversary一覧タブ --}}
         <li class="nav-item">
-            <a href="{{ route('users.anniversaries', ['id' => $user->id]) }}" class="nav-link">
-                お祝い一覧
-                <span class="badge badge-secondary"></span>
-            </a>
+            
+        <button class="btn col-sm">{!! link_to_route('users.anniversaries', 'お祝い一覧', ['id' => $user->id], ['class' => 'btn-full-pink']) !!}</button>
+
         </li>
         {{-- present覧タブ --}}
         <li class="nav-item">
-            <a href="{{ route('users.presents', ['id' => $user->id]) }}" class="nav-link">
-                プレゼント一覧
-                <span class="badge badge-secondary"></span>
-            </a>
+            <button class="btn col-sm">{!! link_to_route('users.presents', 'プレゼント一覧', ['id' => $user->id], ['class' => 'btn-full-yellow']) !!}</button>
         </li>
     </ul>
 </div>

@@ -80,20 +80,50 @@ class AnniversariesController extends Controller
         }
     }
     
-    public function destroy($id)
+    
+    public function edit($id,$anniversary)
     {
-        $anniversary = \App\Anniversary::findOrFail($id);
+
+        $giving_user = \App\Giving_user::findOrFail($id);
+        
+        $anniversary = Anniversary::findOrFail($anniversary);
+        
+        return view('anniversaries.edit',[
+            'anniversary'=> $anniversary,
+            'giving_user' => $giving_user,
+            ]);
+    }
+    
+    public function update(Request $request,$id,$anniversary)
+    {
+        if (\Auth::check()) {
+            
+            \Auth::user();
+                
+            $request->validate([
+                'anniversary' => 'required|max:255',
+                'day' => 'required|max:255',
+            ]);
+            
+            $anniversary = Anniversary::findOrFail($anniversary);
+            $anniversary->anniversary = $request->anniversary;
+            $anniversary->day = $request->day;
+            $anniversary->save();
+                
+            return redirect('/');
+        }
+    }
+    
+    public function destroy($id,$anniversary)
+    {
+        
+        $anniversary = \App\Anniversary::findOrFail($anniversary);
         
         if(\Auth::user()->id === $anniversary->user_id) {
             $anniversary->delete();
         }
         
-        return back();
+        return redirect('/');
     }
-    public function edit($id)
-    {
-        
-    }
-
     
 }

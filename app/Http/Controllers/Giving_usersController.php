@@ -41,6 +41,42 @@ class Giving_usersController extends Controller
         return view('giving_users.create',compact( 'genders','relation','old'));
     }
     
+    public function edit($giving_user)
+    {
+        $giving_user =Giving_user::findOrFail($giving_user);
+        
+        $genders = Giving_user::$genders;
+        
+        $relation = Giving_user::$relation;
+        
+        $old = Giving_user::$old;
+
+        
+        return view('giving_users.edit',compact( 'giving_user','genders','relation','old'));
+    }
+    
+    public function update(Request $request,$giving_user)
+    {
+        
+        $giving_user = Giving_user::findOrFail($giving_user);
+        
+        $request->validate([
+            'name' => 'required|max:25',
+            'relation' => 'required|max:25',
+            'gender' => 'required|max:25',
+            'old' => 'required|max:25',
+        ]);
+        
+        $giving_user->update([
+            'name' => $request->name,
+            'relation' => $request->relation,
+            'gender' => $request->gender,
+            'old' => $request->old,
+            ]);
+            
+            return redirect('/');
+    }
+    
     public function show($id)
     {
         $data = [];

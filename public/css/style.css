@@ -62,13 +62,99 @@
     padding: 0;
 }
 
-/*userlistの箱*/
-
-.boxmi4{
-  background-color: #eee;
-  border: solid 2px #4689FF;
-  margin: 2em 0;
+.box-lavender{
+    position: relative;
+    background: #9999FF;
+    box-shadow: 0px 0px 0px 5px #9999FF;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    color: #454545;
 }
+.box-lavender:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #9933CC #9999FF #9933CC;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.box-lavender p {
+    margin: 0; 
+    padding: 0;
+}
+
+.box-rose{
+    position: relative;
+    background: #FFAAFF;
+    box-shadow: 0px 0px 0px 5px #FFAAFF;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    color: #454545;
+}
+.box-rose:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #FF33FF #FFAAFF #FF33FF;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.box-rose p {
+    margin: 0; 
+    padding: 0;
+}
+
+.box-yellow{
+    position: relative;
+    background: #F0E68C;
+    box-shadow: 0px 0px 0px 5px #F0E68C;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    color: #454545;
+}
+.box-yellow:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #FFFF00 #F0E68C #FFFF00;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.box-yellow p {
+    margin: 0; 
+    padding: 0;
+}
+
+.box-green{
+    position: relative;
+    background: #3CB371;
+    box-shadow: 0px 0px 0px 5px #3CB371;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    color: #454545;
+}
+.box-green:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #006400 #3CB371 #006400;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.box-green p {
+    margin: 0; 
+    padding: 0;
+}
+
+/*userlistの箱*/
 
 .user-content{
   line-height: 2;
@@ -212,4 +298,125 @@
 .btn-flat-border:hover {
   background: #FF367F;
   color:#eee;
+}
+
+.btn-full-green {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  width: 100%;
+  background: #90EE90;/*背景色*/
+  border-bottom: solid 2px #32CD32;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-full-green:hover {
+  border-bottom: solid 2px #90EE90;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+.btn-full-red {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  width: 100%;
+  background: #EE0000;/*背景色*/
+  border-bottom: solid 2px #BB0000;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-full-red:hover {
+  border-bottom: solid 2px #EE0000;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+.btn-full-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  width: 100%;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-full-pop:hover {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+.btn-full-yellow {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  width: 100%;
+  background: #F0E68C;/*背景色*/
+  border-bottom: solid 2px #FFD700;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-full-yellow:hover {
+  border-bottom: solid 2px #F0E68C;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+.btn-full-pink {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  width: 100%;
+  background: #FFC0CB;/*背景色*/
+  border-bottom: solid 2px #FFB6C1;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-full-pink:hover {
+  border-bottom: solid 2px #FFC0CB;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+.btn-full-blue {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  width: 100%;
+  background: #9999FF;/*背景色*/
+  border-bottom: solid 2px #9370DB;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-full-blue:hover {
+  border-bottom: solid 2px #9999FF;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
 }

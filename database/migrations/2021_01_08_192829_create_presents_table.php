@@ -21,7 +21,7 @@ class CreatePresentsTable extends Migration
             $table->string('explain')->nullable();
             $table->timestamps();
             
-            $table->foreign('anniversary_id')->references('id')->on('anniversaries');
+            $table->foreign('anniversary_id')->references('id')->on('anniversaries')->onDelete('cascade');
             
         });
     }

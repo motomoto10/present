@@ -1,81 +1,29 @@
-    <section>
-        <div class="d-flex justify-content-center align-items-center mb-6">
-            <div>
-                <div class="media-body">
-                            <table class="table table-dark">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" colspan="2">投稿者</th>
-                                        <th scope="col">名前</th>
-                                        <th scope="col">関係性</th>
-                                        <th scope="col">お祝い</th>
-                                        <th scope="col">日程</th>
-                                        <th scope="col">プレゼント</th>
-                                        <th scope="col">あげた年</th>
-                                        <th scope="col">アクション</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($giving_users as $giving_user)
-                                        
-                                            @foreach ($giving_user->anniversaries as $anniversary)
-                                            
-                                                    @foreach ($anniversary->presents as $present)
-                                                        <tr>
-                                                            <th>{!! (e($giving_user->user->name)) !!}</th>
-                                                            <td>{!! link_to_route('giving_users.show', '詳細', ['giving_user' => $giving_user->id]) !!}</td>
-                                                            <td>{!! (e($giving_user->name)) !!}</td>
-                                                            <td>{!! (e($giving_user->relation)) !!}</td>
-                                                            <td>{!! (e($anniversary->anniversary)) !!}</td>
-                                                            <td>{!! (e($anniversary->day->format('n月j日') )) !!}</td>
-                                                            <td>{!! (e($present->present)) !!}</td>
-                                                            <td>{!! (e($present->year)) !!}</td>
-                                                            @if (Auth::id() == $giving_user->user_id)
-                                                                <td>いいねの数{{ $present->favorite->count() }}</td>
-                                                            @else
-                                                                <td>@include('present_favorite.favorite_button')</td>
-                                                            @endif
-                                                    @endforeach
-                                            @if(count($anniversary->presents ) == 0)
-                                            <tr>
-                                                <th>{!! (e($giving_user->user->name)) !!}</th>
-                                                <td>{!! link_to_route('giving_users.show', '詳細', ['giving_user' => $giving_user->id]) !!}</td>
-                                                <td>{!! (e($giving_user->name)) !!}</td>
-                                                <td>{!! (e($giving_user->relation)) !!}</td>
-                                                <td>{!! (e($anniversary->anniversary)) !!}</td>
-                                                <td>{!! (e($anniversary->day->format('n月j日') )) !!}</td>
-                                                <td colspan="2"><button class="btn btn-default col-sm">{!! link_to_route('presents.create', '登録', ['id' => $giving_user->id,'anniversary' => $anniversary->id], []) !!}</button></td>
-                                                @if (Auth::id() == $giving_user->user_id)
-                                                                <td>編集ボタンをおく</td>
-                                                            @else
-                                                                <td>-</td>
-                                                            @endif
-                                            @endif
-                                            
-                                            @endforeach
-                                            @if(count($giving_user->anniversaries) == 0)
-                                            <tr>
-                                                <th>{!! (e($giving_user->user->name)) !!}</th>
-                                                <td>{!! link_to_route('giving_users.show', '詳細', ['giving_user' => $giving_user->id]) !!}</td>
-                                                <td>{!! (e($giving_user->name)) !!}</td>
-                                                <td>{!! (e($giving_user->relation)) !!}</td>
-                                                <td>{!! (e($giving_user->gender)) !!}</td>
-                                                <td>{!! (e($giving_user->old)) !!}</td>
-                                                <td colspan="2"><button class="btn btn-default col-sm">{!! link_to_route('anniversaries.create', '登録', [$giving_user->id], []) !!}</button></td>
-                                                <td colspan="2">-</td>
-                                                @if (Auth::id() == $giving_user->user_id)
-                                                        <td>編集ボタン</td>
-                                                    @else
-                                                        <td>-</td>
-                                                    @endif
-                                                @endif
-                                        </tr>
-                                    @endforeach   
-                                </tbody>
-                            </table>
+<div class="row justify-content-center">
+                <div class="col-sm-5 m-1">
+                    <div class="box-lavender">
+                        <div class="text-black row">
+                        <div class="col-sm-4 d-flex align-items-center justify-content-center">{!!($giving_user->name) !!}</div>
+                        <div class="col-sm-8">
+                            <p>＜この人の情報＞</p>
+                            <p>関係性：{!! ($giving_user->relation) !!}</p>
+                            <p>性別：{!! ($giving_user->gender) !!}</p>
+                            <p>年齢：{!! ($giving_user->old) !!}</p>
+                            <p>登録したお祝い数{{ $giving_user->anniversaries->count()}}</p>
+                            </div>
                         </div>
-                {{-- ページネーションのリンク --}}
-    <div>{{ $giving_users->links() }}</div>
-            </div>
-        </div>
-    </section>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div>        
+                        @if (Auth::id() == $giving_user->user_id)
+                        <button class="btn col-sm">{!! link_to_route('anniversaries.create', 'この人のお祝いを登録する', [$giving_user->id], ['class' => 'btn-full-green']) !!}</button>
+                        <button class="btn col-sm">{!! link_to_route('giving_users.edit', 'この人を修正する', [$giving_user->id], ['class' => 'btn-full-pop']) !!}</button>
+                        <button class="btn col-sm">
+                        {!! Form::open(['route' => ['giving_users.destroy','giving_user' => $giving_user->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('削除する', ['class' => 'btn col-sm btn-full-red']) !!}
+                        {!! Form::close() !!}
+                        </button>
+                        @endif
+                    </div>
+                </div>
+</div>

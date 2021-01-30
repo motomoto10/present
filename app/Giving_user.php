@@ -14,7 +14,7 @@ class Giving_user extends Model
     ];
     
     static $genders = [
-        '男', '女','その他'
+        '不明','男', '女','その他'
     ];
     
     static $old = [

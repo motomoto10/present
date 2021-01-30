@@ -3,7 +3,7 @@
         @foreach ($giving_users as $giving_user)
             @foreach ($giving_user->anniversaries as $anniversary)
                     <div class="col-sm-3 m-2">
-                                <div class="box25">
+                                <div class="box-rose">
                                   <div class="text-black text-center">
                                   <div>{!! (e($giving_user->name)) !!}</div>
                                   <div>

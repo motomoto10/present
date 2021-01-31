@@ -27,7 +27,7 @@
                             <div>
                             @include('present_favorite.favorite_button')
                             @include('comments.comment_button')
-                            <div class="btn btn-default col-sm">{!! link_to_route('presents.show', 'プレゼントの詳細', ['present' => $present->id,'anniversary' => $anniversary->id,'id' => $anniversary->user_id], ['class' => 'btn-flat-dashed-border']) !!}</button>
+                            <div class="btn btn-default col-sm">{!! link_to_route('presents.show', 'プレゼントの詳細', ['present' => $present->id,'anniversary' => $anniversary->id,'id' => $anniversary->user_id], ['class' => 'btn-flat-dashed-border']) !!}</div>
                             </div>
                         </div>
                     </div>

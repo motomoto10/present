@@ -24,6 +24,8 @@
                                         <p>{!! (e($present->explain)) !!}</p>
                                         <p>いいねの数{{ $present->favorite->count()}}</p>
                                         <p>コメントの数{{ $present->comment->count()}}</p>
+                                        @include('present_favorite.favorite_button')
+                                        @include('comments.comment_button')
                                         <button class="btn btn-default col-sm">{!! link_to_route('presents.show', 'プレゼントの詳細', ['present' => $present->id,'anniversary' => $anniversary->id,'id' => $giving_user->id], ['class' => 'btn-flat-dashed-border']) !!}</button>
                                     </div>
                                 </div>

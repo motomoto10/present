@@ -1,4 +1,4 @@
-<div class="col-12 mb-3">
+<div class="col-10 mx-auto mb-3">
     <div class="box25">
         <div class="row no-gutters">
             <div class="col-3 col-img">

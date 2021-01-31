@@ -112,7 +112,9 @@ class UsersController extends Controller
         
         $anniversary = Anniversary::where('user_id',$user_id)->get();
         
-        $present = Present::where('anniversary_id',$anniversary[0]->id)->get();
+        $anniversaryId = $anniversary->pluck('anniversary_id')->toArray();
+        
+        $present = Present::where('anniversary_id',$anniversaryId)->get();
         
         // フォロー一覧ビューでそれらを表示
         return view('users.presents',[

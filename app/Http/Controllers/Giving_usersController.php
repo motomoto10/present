@@ -15,13 +15,15 @@ class Giving_usersController extends Controller
         if (\Auth::check()) { // 認証済みの場合
             // 認証済みユーザを取得
             $user = \Auth::user();
-            // ユーザの投稿の一覧を作成日時の降順で取得
-            $giving_users = $user->giving_users()->orderBy('created_at', 'desc');
             
+            $userId = $user->id;
+            
+            // ユーザの投稿の一覧を作成日時の降順で取得
+            $anniversaries = Anniversary::where('user_id',$userId)->orderBy('day', 'asc')->take(3)->get();
             
             $data = [
                 'user' => $user,
-                'giving_users' => $giving_users,
+                'anniversaries' => $anniversaries,
             ];
         }
         

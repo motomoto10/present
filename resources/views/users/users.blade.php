@@ -1,13 +1,13 @@
 @if (count($users) > 0)
     <div class="row">
         @foreach ($users as $user)
-                <div class="col-6 mb-3">
+                <div class="col-sm-6 mb-3">
                     <div class="box25">
                         <div class="row no-gutters">
-                            <div class="col-4 col-img">
+                            <div class="col-sm-4 col-img">
                                 <img class="rounded img-fluid" src="/storage/profile_images/{{ $user->id }}.jpg"width="100px" height="100px" alt="">
                             </div>
-                            <div class="col-8 ">
+                            <div class="col-sm-8 ">
                                 <div>
                                     <h3>{{ $user->name }}</h3>
                                     <p>{{ $user->gender}}　{{ $user->born}}</p>

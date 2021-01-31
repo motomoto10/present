@@ -1,13 +1,13 @@
-<div class="col-10 mx-auto mb-3">
+<div class="col-sm-10 mx-auto mb-3">
     <div class="box25">
         <div class="row no-gutters">
-            <div class="col-3 col-img">
+            <div class="col-sm-3 col-img">
                 <img class="rounded img-fluid" src="/storage/profile_images/{{ $user->id }}.jpg"width="150px" height="150px" alt="">
                 @if (Auth::id() == $user->id)
                 <button class="btn btn-default col-sm">{!! link_to_route('profile.index', '画像を変更する', [],['class' => 'btn-flat-dashed-border']) !!}</button>
                 @endif
             </div>
-            <div class="col-9">
+            <div class="col-sm-9">
                 <div>
                     <h3>{{ $user->name }}</h3>
                     @if (Auth::id() == $user->id)

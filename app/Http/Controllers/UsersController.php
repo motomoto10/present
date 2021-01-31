@@ -31,18 +31,10 @@ class UsersController extends Controller
         
         $user->loadRelationshipCounts();
         
-        $giving_users = $user->giving_users()->orderBy('created_at', 'desc')->paginate(10);
-        
-        $anniversaries = \App\Anniversary::findOrFail($id);
-        
-        
-        
         // ユーザ詳細ビューでそれを表示
         return view('users.show', [
             'user' => $user,
-            'giving_users' => $giving_users,
-            'anniversaries' => $anniversaries,
-            
+
         ]);
     }
     public function edit($id)
@@ -128,6 +120,22 @@ class UsersController extends Controller
             'giving_users' => $giving_users,
             'anniversary'=> $anniversary,
             'present' => $present,
+        ]);
+    }
+    
+    public function presentlist()
+    {
+        
+        $presents = \App\Present::get();
+        
+        
+        $anniversaryId = $presents->pluck('anniversary_id')->toArray();
+        
+        $anniversary = \App\Anniversary::findOrFail($anniversaryId);
+        
+        // 一覧ビューでそれらを表示
+        return view('users.presentlist',[
+            'anniversaries' => $anniversary,
         ]);
     }
 

@@ -24,6 +24,9 @@
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('users', 'UsersController');
         
+        Route::get('presentlist','UsersController@presentlist')->name('users.presentlist');
+
+        
         Route::group(['prefix' => 'users/{id}'],function() {            
             Route::get('giving_users','UsersController@giving_users')->name('users.giving_users');
             Route::get('anniversaries','UsersController@anniversaries')->name('users.anniversaries');

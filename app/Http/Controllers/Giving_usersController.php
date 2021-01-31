@@ -118,10 +118,7 @@ class Giving_usersController extends Controller
             $giving_user->delete();
         }
         
-        return back();
+            return redirect('/');
     }
-    
-
-    
 
 }

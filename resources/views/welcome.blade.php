@@ -11,7 +11,7 @@
             @include('commons.present_reminder')
                 <!--プレゼントもらう人の登録フォームへ-->
                 <div class="btn col-sm">{!! link_to_route('giving_users.create', '送りたい相手を登録する', [], ['class' => 'btn-square-pop btn-hover']) !!}</div>
-                <div class="btn col-sm">{!! link_to_route('users.index', '他のユーザーのプレゼントを確認する', [], ['class' => 'btn-square-green']) !!}</div>
+                <div class="btn col-sm">{!! link_to_route('users.presentlist', '他のユーザーのプレゼントを確認する', [], ['class' => 'btn-square-green']) !!}</div>
                 <div class="btn col-sm">{!! link_to_route('presnts.favorite_present', 'あなたのいいねしたプレゼント', ['id' => $user->id], ['class' => 'btn-square-pink']) !!}</div>
             
             @else

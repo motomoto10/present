@@ -93,7 +93,7 @@
                         <h3 class="text-center">コメント</h3>
                         @foreach($comments as $comment)
                         <div class="box-yellow my-3">
-                            <p>{{$comment->user}}</p>
+                            <p>投稿者：{{$comment->name}}</p>
                             <p>{{$comment->comment}}</p>
                             <p>{{$comment->created_at}}</p>
                         @endforeach

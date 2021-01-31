@@ -30,6 +30,8 @@
                     <div class="form-group row">
                         <label for="comment" class="col-sm-3 col-form-label">コメント：</label>
                         {!! Form::textarea('comment', old('comment'), ['class' => 'form-controlcol-sm-9', 'rows' => '1']) !!}
+                        <label for="name" class="col-sm-3 col-form-label">名前：</label>
+                        {!! Form::textarea('name', old('name'), ['class' => 'form-controlcol-sm-9', 'rows' => '1']) !!}
                     </div>
                         <div class="col-12">
                         {!! Form::submit('登録', ['class' => 'btn btn-square-red']) !!}

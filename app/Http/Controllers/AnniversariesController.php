@@ -50,11 +50,14 @@ class AnniversariesController extends Controller
 
         $giving_user = \App\Giving_user::findOrFail($id);
         
+        $anniversaries = Anniversary::$anniversaries;
+        
         $anniversary = new Anniversary;
         
         return view('anniversaries.create',[
             'anniversary'=> $anniversary,
             'giving_user' => $giving_user,
+            'anniversaries'=> $anniversaries,
             ]);
     }
     
@@ -88,9 +91,13 @@ class AnniversariesController extends Controller
         
         $anniversary = Anniversary::findOrFail($anniversary);
         
+        $anniversaries = Anniversary::$anniversaries;
+
+        
         return view('anniversaries.edit',[
             'anniversary'=> $anniversary,
             'giving_user' => $giving_user,
+            'anniversaries'=> $anniversaries,
             ]);
     }
     

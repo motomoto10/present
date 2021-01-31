@@ -29,6 +29,7 @@ class Comment_presentsController extends Controller
         
         $comment = new Comment;
         $comment->comment = $request->comment;
+        $comment->name = $request->name;
         $comment->user_id = \Auth::user()->id;
         $comment->present_id =$id;
         $comment->save();

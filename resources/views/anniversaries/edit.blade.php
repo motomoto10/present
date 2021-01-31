@@ -9,9 +9,14 @@
                 <div class="formarea container">
                 {!! Form::open(['route' => ['anniversaries.update','id' => $giving_user->id,'anniversary' => $anniversary->id],'method'=>'put']) !!}
                     <div class="form-group row">
-                        <label for="anniversary" class="col-sm-2 col-form-label">お祝い：</label>
-                        <div class="col-sm-10">
-                        {!! Form::textarea('anniversary', old('anniversary'), ['class' => 'form-control', 'rows' => '1']) !!}
+                        {!! Form::label('anniversary', 'お祝い:', ['class' => 'col-sm-2 control-label']) !!}
+                        <div class="col-sm-10 mb-2">
+                            @foreach($anniversaries as $key => $value)
+                                <label class="checkbox-inline">
+                                    {!! Form::radio('anniversary', $value) !!}
+                                    {{ $value }}
+                                </label>
+                            @endforeach
                         </div>
                         <label for="day" class="col-sm-2 col-form-label">日付：</label>
                         <div class="col-sm-10">

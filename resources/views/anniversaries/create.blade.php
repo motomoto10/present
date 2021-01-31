@@ -18,7 +18,12 @@
                         {!! Form::date('day', old('day'), ['class' => 'form-control']) !!}
                         </div>
                     </div>
-                        {!! Form::submit('登録', ['class' => 'btn btn-flat-border']) !!}
+                    <div class="col-12">
+                        {!! Form::submit('登録', ['class' => 'btn btn-square-red']) !!}
+                    </div>
+                        <div class="col-12">
+                        <div class="btn btn-square-white mt-3 " type="button" onclick="history.back()">戻る</div>
+                        </div>
                 {!! Form::close() !!}
                 </div>
             @else

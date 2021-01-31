@@ -47,6 +47,44 @@ class PresentsController extends Controller
         }
     }
     
+    public function edit($id, $anniversary,$present)
+    {   
+        
+        
+        $anniversaries = \App\Anniversary::findOrFail($anniversary);
+        
+        $present = Present::findOrFail($present);
+        
+        return view('presents.edit',[
+            'anniversary'=> $anniversaries,
+            'present' => $present,
+            ]);
+    }
+    
+    public function update(Request $request,$id,$anniversary,$present)
+    {
+        
+
+        if (\Auth::check()) {
+            
+            \Auth::user();
+                
+            $request->validate([
+                'present' => 'required|max:255',
+                'year' => 'required|max:255',
+                'explain' => 'required|max:255',
+            ]);
+            
+            $present = Present::findOrFail($present);
+            $present->present = $request->present;
+            $present->year = $request->year;
+            $present->explain = $request->explain;
+            $present->save();
+                
+            return redirect('/');
+        }
+    }
+    
     public function destroy($present,$anniversary,$id)
     {
         $anniversary =  \App\Anniversary::findOrFail($anniversary);
@@ -78,14 +116,18 @@ class PresentsController extends Controller
    
        public function show($present,$anniversary,$id)
     {   
-        $presents = Present::findOrFail($id);
+        $present = Present::findOrFail($id);
         
         $anniversary = Anniversary::findOrFail($anniversary);
+        
+        $favorites = $present->favorite()->get();
+        
         
         // 一覧ビューでそれらを表示
         return view('presents.show',[
             'anniversary' => $anniversary,
-            'present' => $presents,
+            'present' => $present,
+            'favorites' => $favorites,
         ]);
    }
 }

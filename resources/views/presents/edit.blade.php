@@ -7,7 +7,7 @@
                 <h1>{{ $anniversary->giving_user->name }}の{{$anniversary->anniversary}}に何を送りますか？</h1>
                 <img class="w-25" src="{{ asset('img/present.png') }}">
                 <div class="formarea container">
-                {!! Form::open(['route' => ['presents.store','anniversary' => $anniversary->id,'id' => $anniversary->giving_user_id]]) !!}
+                {!! Form::open(['route' => ['presents.update','id' => $present->anniversary->giving_user_id,'anniversary' => $anniversary->id,'present' => $present->id],'method'=>'put']) !!}
                     <div class="form-group row">
                         <label for="present" class="col-sm-3 col-form-label">プレゼント：</label>
                         {!! Form::textarea('present', old('present'), ['class' => 'form-control col-sm-9', 'rows' => '1']) !!}
@@ -19,7 +19,7 @@
                         {!! Form::textarea('explain', old('explain'), ['class' => 'form-control col-sm-9', 'rows' => '3']) !!}
                     </div>
                     <div class="col-12">
-                        {!! Form::submit('登録', ['class' => 'btn btn-square-red']) !!}
+                        {!! Form::submit('修正する', ['class' => 'btn btn-square-red']) !!}
                     </div>
                         <div class="col-12">
                         <div class="btn btn-square-white mt-3 " type="button" onclick="history.back()">戻る</div>

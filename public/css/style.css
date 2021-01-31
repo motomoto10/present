@@ -27,15 +27,15 @@
     }
     
 .top_navbar {
-    background: ;
 }
 
 .body {
     background-color: #AFEEEE;
 }
 
-.navbar-brand {
-    color:blue;
+.navbar-font {
+    color:#FF69A3;
+    font-weight:bold;
 }
 
 /*present_remainderの箱*/
@@ -266,6 +266,48 @@
 
 .btn-square-pink:hover {
   border-bottom: solid 2px #FFC0CB;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+
+.btn-square-red {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  width:40%;
+  text-decoration: none;
+  color: #FFF;
+  background: #FF6347;/*背景色*/
+  border-bottom: solid 2px #DC143C;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-square-red:hover {
+  border-bottom: solid 2px #FF6347;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+  text-decoration: none;
+  color: #FFF;
+}
+
+.btn-square-white {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  width:40%;
+  text-decoration: none;
+  color: #222;
+  background: #FFFFE0;/*背景色*/
+  border-bottom: solid 2px #FFFACD;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-square-white:hover {
+  border-bottom: solid 2px #FFFFE0;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   text-decoration: none;
   color: #FFF;

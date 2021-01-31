@@ -1,7 +1,7 @@
 <header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark top_navbar">
+    <nav class="navbar navbar-expand-sm top_navbar">
         {{-- トップページへのリンク --}}
-        <a class="navbar-brand" href="/">Present</a>
+        <a class="navbar-brand navbar-font" href="/">Present</a>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
@@ -9,25 +9,19 @@
 
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
-                <ul class="navbar-nav">
+            <ul class="navbar-nav">
                 @if (Auth::check())
                     {{-- ユーザ一覧ページへのリンク --}}
-                    <li class="nav-item">{!! link_to_route('users.index', 'Users', [], ['class' => 'nav-link']) !!}</li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                                {{-- ユーザ詳細ページへのリンク --}}
-                                <li class="dropdown-item">{!! link_to_route('users.show', 'My profile', ['user' => Auth::id()]) !!}</li>
-                                <li class="dropdown-divider"></li>
-                                {{-- ログアウトへのリンク --}}
-                                <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
-                            </ul>
-                    </li>
+                    <li class="nav-item">{!! link_to_route('users.index', 'User一覧', [], ['class' => 'nav-link navbar-font']) !!}</li>
+                    {{-- ユーザ詳細ページへのリンク --}}
+                    <li class="nav-item">{!! link_to_route('users.show', 'Mypage', ['user' => Auth::id()],['class' => 'nav-link navbar-font']) !!}</li>
+                    {{-- ログアウトへのリンク --}}
+                    <li class="nav-item">{!! link_to_route('logout.get', 'ログアウト',[],['class' => 'nav-link navbar-font']) !!}</li>
                 @else
                     {{-- ユーザ登録ページへのリンク --}}
-                    <li class="nav-item">{!! link_to_route('signup.get', '新規登録', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('signup.get', '新規登録', [], ['class' => 'nav-link navbar-font']) !!}</li>
                     {{-- ログインページへのリンク --}}
-                    <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link navbar-font']) !!}</li>
                 @endif
             </ul>
         </div>

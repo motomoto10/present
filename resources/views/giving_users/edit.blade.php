@@ -37,8 +37,12 @@
                                 </label>
                             @endforeach
                         </div>
-                        
-                        {!! Form::submit('登録', ['class' => 'btn btn-flat-border btn-block']) !!}
+                        <div class="col-12">
+                        {!! Form::submit('修正する', ['class' => 'btn btn-square-red']) !!}
+                        </div>
+                        <div class="col-12">
+                        <div class="btn btn-square-white mt-3 " type="button" onclick="history.back()">戻る</div>
+                        </div>
                 {!! Form::close() !!}
             </div>
             @else

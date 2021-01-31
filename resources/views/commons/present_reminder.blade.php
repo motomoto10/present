@@ -2,7 +2,7 @@
         <div class="row justify-content-center">
             @foreach ($anniversaries as $anniversary)
                     <div class="col-sm-3 m-2 ">
-                        <div class="box25">
+                        <div class="box-rose">
                                 <div class="text-black text-center">
                                 <div>
                                     <h5>{!! (e($anniversary->giving_user->name)) !!}の{!! (e($anniversary->anniversary)) !!}</h5>

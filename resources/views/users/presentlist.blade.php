@@ -22,8 +22,11 @@
                             <p>プレゼント：{!! (e($present->present)) !!}</p>
                             <p>ーこのプレゼントへの思いー</p>
                             <p>{!! (e($present->explain)) !!}</p>
+                            <p>いいねの数{{ $present->favorite->count()}}</p>
+                            <p>コメントの数{{ $present->comment->count()}}</p>
                             <div>
                             @include('present_favorite.favorite_button')
+                            @include('comments.comment_button')
                             </div>
                         </div>
                     </div>

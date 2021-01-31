@@ -16,4 +16,3 @@ class Comment extends Model
         return $this->belongsTo(Present::class);
     }
 }
-

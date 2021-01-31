@@ -66,7 +66,7 @@
                     
                 </div>
     </div>
-    <div class="container" >
+    <div class="container mt-3" >
         <div class="row justify-content-center">
                     <div class="col-sm-6">
                         <h3 class="text-center">いいねをくれた人</h3>
@@ -89,11 +89,16 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-sm-6 text-center">
-                        <h3>コメント</h3>
-                        <div class="box-yellow">
-                        
+                    <div class="col-sm-6">
+                        <h3 class="text-center">コメント</h3>
+                        @foreach($comments as $comment)
+                        <div class="box-yellow my-3">
+                            <p>{{$comment->user}}</p>
+                            <p>{{$comment->comment}}</p>
+                            <p>{{$comment->created_at}}</p>
+                        @endforeach
                         </div>
+                        
                     </div>
         </div>
     </div>    

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Present;
 use APP\User;
 use App\Anniversary;
+use App\Comment;
 
 class PresentsController extends Controller
 {
@@ -122,12 +123,14 @@ class PresentsController extends Controller
         
         $favorites = $present->favorite()->get();
         
+        $comments = Comment::where('present_id',$id)->get();
         
         // 一覧ビューでそれらを表示
         return view('presents.show',[
             'anniversary' => $anniversary,
             'present' => $present,
             'favorites' => $favorites,
+            'comments' => $comments,
         ]);
    }
 }

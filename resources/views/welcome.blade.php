@@ -37,7 +37,11 @@
                         <button class="btn btn-default col-sm">{!! link_to_route('signup.get', '新規登録はこちらから！', [], ['class' => 'btn-square-pink']) !!}</button>
                         {{-- ログインページへのリンク --}}
                         <button class="btn btn-default col-sm">{!! link_to_route('login', 'ログインはこちらから！', [], ['class' => 'btn-square-green']) !!}</button>
+                        {{-- ゲストログインページへのリンク --}}
+                        <button class="btn btn-default col-sm">{!! link_to_route('login.guest', 'ゲストログインはこちらから！', [], ['class' => 'btn-square-pop']) !!}</button>
+
                     </div>
+                    
             @endif
         </div>
     </div>
